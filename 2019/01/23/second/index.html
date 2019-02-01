@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原来爬虫不过如此">
+<meta name="keywords" content="love">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫&amp;基于网易云音乐的用户推荐系统">
+<meta property="og:url" content="http://yoursite.com/2019/01/23/second/index.html">
+<meta property="og:site_name" content="伪文艺Boy">
+<meta property="og:description" content="原来爬虫不过如此">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548264641766&di=fe90c4491884089ac32fbe8048b86484&imgtype=0&src=http%3A%2F%2Fimg004.file.rongbiz.cn%2Fuploadfile%2F201708%2F28%2F17%2F17-09-54-72-912065.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-88831c72533d35df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-64787eb6be56fc11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-e9824418203102a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-78012bd0619b4146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-6dcd66bdbf571238.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-d875e7de9e2254ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-a11f1a8b753d8e37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-e55b1228719173a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-21e56b7d5566b858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-194f0f69f7498781.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-b269bcf869ed6163.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-4fbc05505b68b822.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-36b8322553a351a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-681b2bbb01eb635b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-89113ae02b1ead39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-afddfd5cf5b4b954.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-90a8324c805ed75f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-1794b832e1007865.GIF?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-454144727b43db0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-0df091d891856dde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-d64660c935fff028.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-23T14:48:46.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python爬虫&amp;基于网易云音乐的用户推荐系统">
+<meta name="twitter:description" content="原来爬虫不过如此">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548264641766&di=fe90c4491884089ac32fbe8048b86484&imgtype=0&src=http%3A%2F%2Fimg004.file.rongbiz.cn%2Fuploadfile%2F201708%2F28%2F17%2F17-09-54-72-912065.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/23/second/">
+
+
+
+
+
+  <title>python爬虫&基于网易云音乐的用户推荐系统 | 伪文艺Boy</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">伪文艺Boy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spark</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首&emsp;&emsp;页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归&emsp;&emsp;档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/second/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lxp">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="伪文艺Boy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python爬虫&基于网易云音乐的用户推荐系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T22:31:10+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548264641766&amp;di=fe90c4491884089ac32fbe8048b86484&amp;imgtype=0&amp;src=http%3A%2F%2Fimg004.file.rongbiz.cn%2Fuploadfile%2F201708%2F28%2F17%2F17-09-54-72-912065.jpg" alt="image.png"><br>原来爬虫不过如此<br><a id="more"></a></p>
+<blockquote>
+<p>申明：本文纯属原创，有参考的地方都会在文中给出链接。如有转载，需征求本人同意。</p>
+</blockquote>
+<h2 id="一、目标网站介绍"><a href="#一、目标网站介绍" class="headerlink" title="一、目标网站介绍"></a>一、目标网站介绍</h2><p><a href="https://music.163.com/" target="_blank" rel="noopener">网易云音乐</a>是一款由网易开发的音乐产品，是网易杭州研究院的成果，依托专业音乐人、DJ、好友推荐及社交功能，在线音乐服务主打歌单、社交、大牌推荐和音乐指纹，以歌单、DJ节目、社交、地理位置为核心要素，主打发现和分享。</p>
+<p>2017年11月17日，网易云用户突破4亿。知乎上有这样一个问题：<a href="https://www.zhihu.com/question/46260953" target="_blank" rel="noopener">你为什么用网易云</a>其中，有一条是这样说的：</p>
+<blockquote>
+<p>成年人的生活里有太多无奈。<br>我之前把情绪和秘密写在QQ留言板里，被朋友们发现。<br>后来写在人人网上，被朋友们发现。<br>后来写在微博里，被朋友们发现。<br>后来写在知乎里，被朋友们发现。<br>后来淹没在网易云强大的评论区里。<br>我需要一个地方，一个可以光明正大写出来的地方。<br>不用担心被任何人看到，不需要任何解释。<br>网易云可以把所有的悲伤，变成段子。</p>
+</blockquote>
+<p>出于大众对网易云音乐的喜爱，这次文本挖掘我放在了这里，希望能发现些有趣的东西。</p>
+<h2 id="二、所需工具"><a href="#二、所需工具" class="headerlink" title="二、所需工具"></a>二、所需工具</h2><ul>
+<li>Anaconda 3.5.0</li>
+<li>Pycharm</li>
+<li>Node.js</li>
+<li>Mongodb</li>
+<li>Studio 3T</li>
+<li>RStudio</li>
+</ul>
+<h2 id="三、数据爬取"><a href="#三、数据爬取" class="headerlink" title="三、数据爬取"></a>三、数据爬取</h2><h3 id="3-1-环境搭建"><a href="#3-1-环境搭建" class="headerlink" title="3.1 环境搭建"></a>3.1 环境搭建</h3><p>本文基于Scrapy框架爬取数据。使用pip install 来安装scrapy需要安装大量的依赖库：</p>
+<ul>
+<li><p>wheel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install wheel</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml" target="_blank" rel="noopener">lxml</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install D:\Downloads\Scrapy\lxml-4.3.0-cp36-cp36m-win_amd64.whl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://pypi.python.org/pypi/pyOpenSSL#downloads" target="_blank" rel="noopener">PyOpenssl</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install D:\Downloads\Scrapy\pyOpenSSL-18.0.0-py2.py3-none-any.whl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="noopener">Twisted</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install D:\Downloads\Scrapy\Twisted-18.9.0-cp36-cp36m-win_amd64.whl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://sourceforge.net/projects/pywin32/files/pywin32/Build%20220/" target="_blank" rel="noopener">Pywin32</a><br>可执行文件，挑选与Python对应版本安装就好。</p>
+</li>
+<li>Scrapy <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scrapy</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里我使用了Anaconda来安装scrapy，安装时只需要一条语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install scrapy</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-网站分析"><a href="#3-2-网站分析" class="headerlink" title="3.2 网站分析"></a>3.2 网站分析</h3><p>网易云音乐首页：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13155641-88831c72533d35df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>爬取思路有两种：</p>
+<p>1.基于网页原代码，利用正则表达式、XPath等获取数据；</p>
+<p>2.基于每次请求的API，直接获取所需数据；</p>
+<p>本文采用第二种，针对<a href="https://music.163.com/#/song?id=28936510" target="_blank" rel="noopener">电视剧《旋风少女》插曲</a>的评论做简单说明：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-64787eb6be56fc11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>查看NetWork，发起请求，我们可以看到，数据保存在这里:<br><img src="https://upload-images.jianshu.io/upload_images/13155641-e9824418203102a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>请求地址为：<a href="https://music.163.com/weapi/v1/resource/comments/R_SO_4_28936510?csrf_token=" target="_blank" rel="noopener">https://music.163.com/weapi/v1/resource/comments/R_SO_4_28936510?csrf_token=</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13155641-78012bd0619b4146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>但是Request HEaders里的Cookie值、FromData里的params、encSecKey都是加密过的。开始解密：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13155641-6dcd66bdbf571238.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>然后，我从一众解密大佬的海谈阔论中发现了这个神奇的存在，哈哈，众多泥石流里的一股清泉啊。没错，就是这个链接：</p>
+<p><a href="http://music.163.com/api/v1/resource/comments/R_SO_4_28936510" target="_blank" rel="noopener">http://music.163.com/api/v1/resource/comments/R_SO_4_28936510</a><br><img src="https://upload-images.jianshu.io/upload_images/13155641-d875e7de9e2254ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>很好，狂喜。但是很不巧的是网易云设置了反爬虫，根本下不不了手，爬虫时会出现以下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;code&quot;:-460,&quot;msg&quot;:&quot;Cheating&quot;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是网上存在的解决办法：</p>
+<p>更换动态IP的：</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/c2ce89b75a9f?from=timeline" target="_blank" rel="noopener">我跟网易云音乐爬虫不得不说的故事（文末附精彩评论）</a></li>
+</ul>
+<p>复制请求头的：</p>
+<ul>
+<li><a href="https://blog.csdn.net/fu254983303/article/details/79434882" target="_blank" rel="noopener">Python爬网易云音乐的那些事</a></li>
+</ul>
+<p>说明：上面两种方法在现在是行不通的，网易云加强了反爬虫机制，对请求头中的Cookie值进行了加密，所以有了下面这些对请求头中的Cookie值进行解密的：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/36081767" target="_blank" rel="noopener">如何爬网易云音乐的评论数？</a></li>
+<li><a href="https://www.jianshu.com/p/0de709b3f64f" target="_blank" rel="noopener">用Python代码来下载任意指定网易云歌曲（超详细版）</a></li>
+</ul>
+<p>但是，这种解密方法繁琐复杂，本文采用@Binaryify团队开发的[NeteaseCloudMusicApi]获取请求，这是一个相当便利、好用的API，感谢Binaryify。</p>
+<h3 id="3-3-功能特性"><a href="#3-3-功能特性" class="headerlink" title="3.3 功能特性"></a>3.3 功能特性</h3><p>此次爬虫，下面的所有功能，都可以实现，是的，都可以！只要你想要的，在网易云上面有的，都可以爬，随便爬！！！就是这么任性和嚣张！奈我何？！哈哈哈！</p>
+<blockquote>
+<p>获取用户信息 , 歌单，收藏，mv, dj 数量<br>获取用户歌单<br>获取用户电台<br>获取用户关注列表<br>获取用户粉丝列表<br>获取用户动态<br>获取用户播放记录<br>获取精品歌单<br>获取歌单详情<br>搜索<br>搜索建议<br>获取歌词<br>歌曲评论<br>收藏单曲到歌单<br>专辑评论<br>歌单评论<br>mv 评论<br>电台节目评论<br>banner<br>获取歌曲详情<br>获取专辑内容<br>获取歌手单曲<br>获取歌手 mv<br>获取歌手专辑<br>获取歌手描述<br>获取相似歌手<br>获取相似歌单<br>相似 mv<br>获取相似音乐<br>获取最近 5 个听了这首歌的用户<br>获取每日推荐歌单<br>获取每日推荐歌曲<br>私人 FM<br>签到<br>喜欢音乐<br>垃圾桶<br>歌单 ( 网友精选碟 )<br>新碟上架<br>热门歌手<br>最新 mv<br>推荐 mv<br>推荐歌单<br>推荐新音乐<br>推荐电台<br>推荐节目<br>独家放送<br>mv 排行<br>获取 mv 数据<br>播放 mv/视频<br>排行榜<br>歌手榜<br>云盘<br>电台 - 推荐<br>电台 - 分类<br>电台 - 分类推荐<br>电台 - 订阅<br>电台 - 详情<br>电台 - 节目<br>给评论点赞<br>获取动态<br>获取热搜<br>发送私信<br>发送私信歌单<br>新建歌单<br>收藏/取消收藏歌单<br>歌单分类<br>收藏的歌手列表<br>订阅的电台列表<br>相关歌单推荐<br>付费精选接口<br>音乐是否可用检查接口<br>登录状态<br>获取视频数据<br>发送/删除评论<br>热门评论<br>视频评论<br>退出登录<br>所有榜单<br>所有榜单内容摘要<br>收藏视频<br>收藏 MV<br>视频详情<br>相关视频<br>关注用户<br>新歌速递<br>喜欢音乐列表(无序)<br>收藏的 MV 列表</p>
+</blockquote>
+<p>本文以其中几个为例，进行数据爬取和文本挖掘：</p>
+<h3 id="3-3-歌单"><a href="#3-3-歌单" class="headerlink" title="3.3 歌单"></a>3.3 歌单</h3><p>我们找到歌单页面为下：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-a11f1a8b753d8e37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>可以看到：<br>语种有：华语、欧美、日语、韩语、小语种；<br>风格有：流行、摇滚、民谣、电子、舞曲、说唱、轻音乐、说唱、爵士、乡村、古典、民族、英伦、金属、朋克、蓝调、雷鬼、世界音乐、拉丁、古风等；还有对歌单的场景、情感、主题分类。</p>
+<p>我们不对其进行帅选，爬取所有种类的歌单。当每页为35个歌单的时候，一共有38页；当每页为20个歌单的时候，一共有66页，我们把66页一共1306个的歌单信息爬取下来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class MenuSpider(scrapy.Spider):</span><br><span class="line">    name = &apos;menu&apos;</span><br><span class="line">    allowed_domains = [&apos;localhost:3000&apos;]</span><br><span class="line">    start_urls = [&apos;http://localhost:3000/&apos;]</span><br><span class="line">    allplaylist_url = &apos;http://localhost:3000/top/playlist?order=hot&amp;cat=%E5%85%A8%E9%83%A8&amp;limit=20&amp;offset=&#123;offset&#125;&apos;</span><br><span class="line"></span><br><span class="line">    def start_requests(self):</span><br><span class="line">        for i in range(0, 66):</span><br><span class="line">            yield Request(self.allplaylist_url.format(offset=i * 20), callback=self.parse_allplaylist)</span><br><span class="line"></span><br><span class="line">    def parse_allplaylist(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = MusicmenuItem()</span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">                yield item</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-3-歌曲"><a href="#3-3-歌曲" class="headerlink" title="3.3 歌曲"></a>3.3 歌曲</h3><p><img src="https://upload-images.jianshu.io/upload_images/13155641-e55b1228719173a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>我们选择爬取歌曲评论信息的时候一并把歌曲信息爬下来。</p>
+<h3 id="3-5-歌曲评论"><a href="#3-5-歌曲评论" class="headerlink" title="3.5 歌曲评论"></a>3.5 歌曲评论</h3><p>我们的目的是获取K个歌单下面的M首歌曲的前N页评论信息。<br><img src="https://upload-images.jianshu.io/upload_images/13155641-21e56b7d5566b858.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<blockquote>
+<p>2018年12月30日下午3点27分：</p>
+</blockquote>
+<p>元旦公休，周日，CS下雪，CSU美不胜收。<br>从前晚、昨天、昨晚01:00点，我一直在一个问题上挣扎，那就是爬取前4首歌的前3页评论时，为什么爬取的时候只会爬到7条记录：第一首第一页，第二首第一页，第三首第一页，第四首一、二、三页，现在这个问题终于解决。<br>其中，有包括：Scrapy的调试：<a href="https://blog.csdn.net/u012052268/article/details/72063917" target="_blank" rel="noopener">pycharm下打开、执行并调试scrapy爬虫程序</a>。</p>
+<ul>
+<li><strong>Crawer 1.0</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=&apos;utf8&apos;) #改变标准输出的默认编码</span><br><span class="line"></span><br><span class="line">class MusiccommentsSpider(scrapy.Spider):</span><br><span class="line">    name = &apos;musiccomments&apos;</span><br><span class="line">    allowed_domains = [&apos;localhost:3000&apos;]</span><br><span class="line">    start_urls = [&apos;http://localhost:3000/comment/music?id=296883/&apos;]</span><br><span class="line">    comment_url = &apos;http://localhost:3000/comment/music?id=&#123;id&#125;&amp;offset=&#123;offset&#125;&amp;limit=20&apos;</span><br><span class="line">    playlist_url = &apos;http://localhost:3000/playlist/detail?id=2571516884&apos;</span><br><span class="line">    num_comment = 0</span><br><span class="line">    song_id=0</span><br><span class="line"></span><br><span class="line">    def start_requests(self):</span><br><span class="line">        yield Request(self.playlist_url, callback=self.parse_playlist)</span><br><span class="line">        #yield Request(self.comment_url.format(offset=self.num_comment), callback=self.parse_comment,dont_filter=True)</span><br><span class="line"></span><br><span class="line">    def parse_playlist(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = WangyiyunPlaylistItem()</span><br><span class="line">        #print(result.get(&apos;playlist&apos;).get(&apos;tracks&apos;).get(&apos;name&apos;))</span><br><span class="line"> </span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">                yield item</span><br><span class="line"></span><br><span class="line">        #global song_id</span><br><span class="line">        for i in range(0, 4):</span><br><span class="line">        #for i in range(0,(result.get(&apos;playlist&apos;).get(&apos;trackCount&apos;))-1):</span><br><span class="line">            self.num_comment=0</span><br><span class="line">            self.song_id = result.get(&apos;playlist&apos;).get(&apos;tracks&apos;)[i].get(&apos;id&apos;)</span><br><span class="line">            yield Request(self.comment_url.format(id=self.song_id,offset=self.num_comment), callback=self.parse_comment,dont_filter=True)</span><br><span class="line"></span><br><span class="line">    def parse_comment(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = WangyiyunCommentItem()</span><br><span class="line">        #print(response.text.encode(&apos;utf-8&apos;,&apos;ignore&apos;))</span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">                yield item</span><br><span class="line"></span><br><span class="line">        self.num_comment = self.num_comment + 1</span><br><span class="line">        if self.num_comment &lt;= 2:</span><br><span class="line">            yield Request(self.comment_url.format(id=self.song_id, offset=self.num_comment * 20),</span><br><span class="line">                          callback=self.parse_comment, dont_filter=True)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>究其原因，是yield的缘故，传送门：<a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856" target="_blank" rel="noopener">python中yield的用法详解——最简单，最清晰的解释</a>。一定要明白语句的执行顺序和yield的特殊用法，双重循环省事更多，何必非要搞函数递归？</p>
+<ul>
+<li><strong>Crawer 2.0</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import time</span><br><span class="line">import scrapy</span><br><span class="line">from scrapy import Spider,Request</span><br><span class="line">import io</span><br><span class="line">import sys</span><br><span class="line">import json</span><br><span class="line">from wangyiyun.items import WangyiyunCommentItem</span><br><span class="line">from wangyiyun.items import WangyiyunPlaylistItem</span><br><span class="line"></span><br><span class="line">sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=&apos;utf8&apos;) #改变标准输出的默认编码</span><br><span class="line"></span><br><span class="line">class MusiccommentsSpider(scrapy.Spider):</span><br><span class="line">    name = &apos;musiccomments&apos;</span><br><span class="line">    allowed_domains = [&apos;localhost:3000&apos;]</span><br><span class="line">    start_urls = [&apos;http://localhost:3000/comment/music?id=296883/&apos;]</span><br><span class="line">    comment_url = &apos;http://localhost:3000/comment/music?id=&#123;id&#125;&amp;offset=&#123;offset&#125;&amp;limit=20&apos;</span><br><span class="line">    playlist_url = &apos;http://localhost:3000/playlist/detail?id=2571516884&apos;</span><br><span class="line">    num_comment = 0</span><br><span class="line">    song_id=0</span><br><span class="line"></span><br><span class="line">    def start_requests(self):</span><br><span class="line">        yield Request(self.playlist_url, callback=self.parse_playlist)</span><br><span class="line">        #yield Request(self.comment_url.format(offset=self.num_comment), callback=self.parse_comment,dont_filter=True)</span><br><span class="line"></span><br><span class="line">    def parse_playlist(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = WangyiyunPlaylistItem()</span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">                yield item</span><br><span class="line"></span><br><span class="line">        for i in range(0, 4):</span><br><span class="line">            for j in range(0,3):</span><br><span class="line">                yield Request(</span><br><span class="line">                    self.comment_url.format(id=result.get(&apos;playlist&apos;).get(&apos;tracks&apos;)[i].get(&apos;id&apos;), offset=j * 20),</span><br><span class="line">                    callback=self.parse_comment, dont_filter=True)</span><br><span class="line"></span><br><span class="line">    def parse_comment(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = WangyiyunCommentItem()</span><br><span class="line">        #print(response.text.encode(&apos;utf-8&apos;,&apos;ignore&apos;))</span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">                yield item</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>是不是简洁了很多？<br>接下来，连接数据库，提取上面所爬歌单的id，根据id值获得每个歌单下面的歌曲id，再根据歌曲id值获得每首歌下面的评论信息。执行翻页操作，从而最终获取1306个歌单下面的前30首歌曲的前10页评论：</p>
+<ul>
+<li><strong>Crawer 3.0</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import time</span><br><span class="line">import scrapy</span><br><span class="line">from scrapy import Spider,Request</span><br><span class="line">import io</span><br><span class="line">import sys</span><br><span class="line">import json</span><br><span class="line">import pandas as pd</span><br><span class="line">import pymongo</span><br><span class="line">from wangyiyun.items import WangyiyunCommentItem</span><br><span class="line">from wangyiyun.items import WangyiyunPlaylistItem</span><br><span class="line">from wangyiyun.items import WangyiyunAllPlaylistItem</span><br><span class="line"></span><br><span class="line">sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=&apos;utf8&apos;) #改变标准输出的默认编码</span><br><span class="line"></span><br><span class="line">class MusiccommentsSpider(scrapy.Spider):</span><br><span class="line">    name = &apos;musiccomments&apos;</span><br><span class="line">    allowed_domains = [&apos;localhost:3000&apos;]</span><br><span class="line">    start_urls = [&apos;http://localhost:3000/comment/music?id=296883/&apos;]</span><br><span class="line">    allplaylist_url = &apos;http://localhost:3000/top/playlist?order=hot&amp;cat=%E5%85%A8%E9%83%A8&amp;limit=20&amp;offset=&#123;offset&#125;&apos;</span><br><span class="line">    playlist_url = &apos;http://localhost:3000/playlist/detail?id=&#123;id&#125;&apos;</span><br><span class="line">    comment_url = &apos;http://localhost:3000/comment/music?id=&#123;id&#125;&amp;offset=&#123;offset&#125;&amp;limit=20&apos;</span><br><span class="line">    num_comment = 0</span><br><span class="line">    num_page = 0</span><br><span class="line">    song_id = 0</span><br><span class="line">    results = &apos;&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def start_requests(self):</span><br><span class="line">        client = pymongo.MongoClient(host=&apos;localhost&apos;, port=27017)</span><br><span class="line">        db = client[&apos;music&apos;]</span><br><span class="line">        collection = db[&apos;menu&apos;]</span><br><span class="line">        # 将数据库数据转为dataFrame</span><br><span class="line">        menu = pd.DataFrame(list(collection.find()))</span><br><span class="line">        num = menu[&apos;playlists&apos;]</span><br><span class="line">        result = pd.DataFrame(num.iloc[0])</span><br><span class="line">        for i in range(1, 66):</span><br><span class="line">            data2 = pd.DataFrame(num.iloc[i])</span><br><span class="line">            result = pd.concat([result, data2], ignore_index=True)</span><br><span class="line">        print(result.shape)</span><br><span class="line">        id = result[&apos;id&apos;]</span><br><span class="line">        for i in range(0, 1000):</span><br><span class="line">            yield Request(self.playlist_url.format(id=id.iloc[i]), callback=self.parse_playlist)</span><br><span class="line">            </span><br><span class="line">    def parse_playlist(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = WangyiyunPlaylistItem()</span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">                yield item</span><br><span class="line"></span><br><span class="line">        for j in range(0, 30):</span><br><span class="line">            for k in range(0,10):</span><br><span class="line">                yield Request(</span><br><span class="line">                    self.comment_url.format(id=result.get(&apos;playlist&apos;).get(&apos;tracks&apos;)[j].get(&apos;id&apos;), offset=k * 20),</span><br><span class="line">                    callback=self.parse_comment, dont_filter=True)</span><br><span class="line"></span><br><span class="line">    def parse_comment(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = WangyiyunCommentItem()</span><br><span class="line">        #print(response.text.encode(&apos;utf-8&apos;,&apos;ignore&apos;))</span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">                yield item</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>获取了13943个文档。由于爬取时歌曲信息和评论信息保存到了一张表里，去掉其中的歌曲信息，评论信息约有12000*20=24万条。<br><img src="https://upload-images.jianshu.io/upload_images/13155641-194f0f69f7498781.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>说明：由于爬取的时候IP被封，这24万条评论并非所有，这一问题在后文中处理。<br><img src="https://upload-images.jianshu.io/upload_images/13155641-b269bcf869ed6163.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>并且，IP被封还导致我网易云音乐的评论是看不了的，加载不出来的。。。网易云音乐做得真够绝！一直都是这样子。。。。<br><img src="https://upload-images.jianshu.io/upload_images/13155641-4fbc05505b68b822.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="3-6-网易云音乐用户"><a href="#3-6-网易云音乐用户" class="headerlink" title="3.6 网易云音乐用户"></a>3.6 网易云音乐用户</h3><p>爬取思路：我们从网易云音乐的大V<a href="https://music.163.com/#/user/follows?id=9003" target="_blank" rel="noopener">云音乐小秘书</a>开始，爬取其关注和粉丝，再爬取其关注者的关注和粉丝，粉丝的关注和粉丝，以此类推，不断递归，雪球会越滚越大，涉及到的用户会越来越多，怎么样？是不是感觉很爽很刺激？</p>
+<p>代码奉上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import time</span><br><span class="line">import scrapy</span><br><span class="line">import json</span><br><span class="line">from scrapy import Spider, Request</span><br><span class="line">from WangyiyunUser.items import WangyiyunuserItem</span><br><span class="line"></span><br><span class="line">class UserSpider(scrapy.Spider):</span><br><span class="line">    name = &apos;user&apos;</span><br><span class="line">    allowed_domains = [&apos;localhost:3000&apos;]</span><br><span class="line">    start_urls = [&apos;http://localhost:3000/&apos;]</span><br><span class="line">    user_url = &apos;http://localhost:3000/user/detail?uid=&#123;uid&#125;&apos;</span><br><span class="line">    follows_url = &apos;http://localhost:3000/user/follows?uid=&#123;uid&#125;&amp;offset=&#123;offset&#125;&amp;limit=&#123;limit&#125;&apos;</span><br><span class="line">    followers_url = &apos;http://localhost:3000/user/followeds?uid=&#123;uid&#125;&amp;offset=&#123;offset&#125;&amp;limit=&#123;limit&#125;&apos;</span><br><span class="line">    start_uid = &apos;9003&apos;</span><br><span class="line">    follows_next_page=0</span><br><span class="line">    followers_next_page=0</span><br><span class="line"></span><br><span class="line">    def start_requests(self):</span><br><span class="line">        yield Request(self.user_url.format(uid=self.start_uid), self.parse_user,dont_filter = True)</span><br><span class="line">        </span><br><span class="line">        yield Request(self.follows_url.format(uid=self.start_uid, limit=30, offset=0),</span><br><span class="line">                      self.parse_follows,dont_filter = True)</span><br><span class="line">        </span><br><span class="line">        yield Request(self.followers_url.format(uid=self.start_uid, limit=30, offset=0),self.parse_followers,dont_filter = True)</span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">    def parse_user(self, response):</span><br><span class="line">        result = json.loads(response.text)</span><br><span class="line">        item = WangyiyunuserItem()</span><br><span class="line"></span><br><span class="line">        for field in item.fields:</span><br><span class="line">            if field in result.keys():</span><br><span class="line">                item[field] = result.get(field)</span><br><span class="line">        yield item</span><br><span class="line">        #print(result.get(&apos;profile&apos;).get(&apos;userId&apos;))</span><br><span class="line"></span><br><span class="line">        yield Request(</span><br><span class="line">          self.follows_url.format(uid=result.get(&apos;profile&apos;).get(&apos;userId&apos;), limit=30, offset=0),</span><br><span class="line">            self.parse_follows,dont_filter = True)</span><br><span class="line">     </span><br><span class="line">        yield Request(</span><br><span class="line">            self.followers_url.format(uid=result.get(&apos;profile&apos;).get(&apos;userId&apos;), limit=30, offset=0),</span><br><span class="line">            self.parse_followers,dont_filter = True)</span><br><span class="line">       </span><br><span class="line">    def parse_follows(self, response):</span><br><span class="line">        results = json.loads(response.text)</span><br><span class="line">        print(&apos;正在判断关注者:&apos;)</span><br><span class="line">        if &apos;follow&apos; in results.keys():</span><br><span class="line">            for result in results.get(&apos;follow&apos;):</span><br><span class="line">                yield Request(self.user_url.format(uid=result.get(&apos;userId&apos;)),</span><br><span class="line">                              self.parse_user,dont_filter = True)</span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">        if results.get(&apos;more&apos;) == True:</span><br><span class="line">            self.follows_next_page = self.follows_next_page+1</span><br><span class="line">            yield Request(self.follows_url.format(uid=self.start_uid, limit=30, offset=self.follows_next_page*30),</span><br><span class="line">                          self.parse_follows,dont_filter = True)</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">    def parse_followers(self, response):</span><br><span class="line">        results = json.loads(response.text)</span><br><span class="line"></span><br><span class="line">        if &apos;followeds&apos; in results.keys():</span><br><span class="line">            for result in results.get(&apos;followeds&apos;):</span><br><span class="line">                yield Request(self.user_url.format(uid=result.get(&apos;userId&apos;)),</span><br><span class="line">                              self.parse_user,dont_filter = True)</span><br><span class="line">               </span><br><span class="line"></span><br><span class="line">        if results.get(&apos;more&apos;) == True:</span><br><span class="line">            self.followers_next_page=self.followers_next_page+1</span><br><span class="line">            yield Request(self.followers_url.format(uid=self.start_uid, limit=30, offset=self.followers_next_page*30),</span><br><span class="line">                          self.parse_followers,dont_filter = True)</span><br></pre></td></tr></table></figure></p>
+<p>最终在封IP之前获得了14974条用户详情。<br><img src="https://upload-images.jianshu.io/upload_images/13155641-36b8322553a351a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="四、数据分析"><a href="#四、数据分析" class="headerlink" title="四、数据分析"></a>四、数据分析</h2><h3 id="4-1-歌单"><a href="#4-1-歌单" class="headerlink" title="4.1 歌单"></a>4.1 歌单</h3><h4 id="4-1-1-播放数量最多的TOP20歌单"><a href="#4-1-1-播放数量最多的TOP20歌单" class="headerlink" title="4.1.1 播放数量最多的TOP20歌单"></a>4.1.1 播放数量最多的TOP20歌单</h4><p> 导入包，设置中文字体支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pymongo</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from pylab import mpl  </span><br><span class="line">#设置图片显示字体对汉字的支持</span><br><span class="line">mpl.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;] </span><br><span class="line">client = pymongo.MongoClient(host=&apos;localhost&apos;, port=27017)</span><br></pre></td></tr></table></figure></p>
+<p>从数据库导入数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db = client[&apos;music&apos;]</span><br><span class="line">collection = db[&apos;menu&apos;]</span><br><span class="line"># 将数据库数据转为dataFrame</span><br><span class="line">data = pd.DataFrame(list(collection.find()))</span><br></pre></td></tr></table></figure></p>
+<p>查看数据维度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(data.shape)</span><br></pre></td></tr></table></figure></p>
+<p>每页的歌单保存为一个文档，66页的歌单，一共有66个文档。<br>取其中一页歌单，查看内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num=data[&apos;playlists&apos;]</span><br><span class="line">print(num.iloc[0])</span><br></pre></td></tr></table></figure></p>
+<p>为方便观察，对其做json解析。限于篇幅，取其中一个歌单的内容显示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">	&apos;name&apos;: &apos;你是个成熟的成年人了，你该戒掉情绪了。&apos;,</span><br><span class="line">	&apos;id&apos;: 2468145627,</span><br><span class="line">	&apos;trackNumberUpdateTime&apos;: 1540176152147,</span><br><span class="line">	&apos;status&apos;: 0,</span><br><span class="line">	&apos;userId&apos;: 49341371,</span><br><span class="line">	&apos;createTime&apos;: 1539449979814,</span><br><span class="line">	&apos;updateTime&apos;: 1540176152147,</span><br><span class="line">	&apos;subscribedCount&apos;: 58406,</span><br><span class="line">	&apos;trackCount&apos;: 43,</span><br><span class="line">	&apos;cloudTrackCount&apos;: 0,</span><br><span class="line">	&apos;coverImgUrl&apos;: &apos;http://p2.music.126.net/qXN1QIV_mGUV1BusdRX1CA==/109951163602371733.jpg&apos;,</span><br><span class="line">	&apos;coverImgId&apos;: 109951163602371730,</span><br><span class="line">	&apos;description&apos;: &apos;-\n\n你要做一个不动声色的大人了。不准情绪化，不准偷偷想念，不准回头看。去过自己另外的生活。\n\n以前的你，哭着哭着就笑了。\n\n现在的你，笑着笑着就哭了。\n\n到了一定的年纪，眼泪越来越少，因为身边再也没有一个能帮你擦眼泪的人。\n\n在成年人的世界里，最让人想哭的三个字是：不要哭。\n\n-\n\n人生还有眼泪也冲刷不干净的巨大悲伤，还有难忘的痛苦让你们即使想哭也不能流泪。\n\n怀揣着痛苦和悲伤，即使如此也要带上它们笑着前行。\n\n-\n\n如果可以，往后请让笑容比眼泪多。就算要哭，每一滴眼泪的名字也应该是——喜极而泣。\n\n-\n\n封面:站酷插画师Y_jianjian&apos;,</span><br><span class="line">	&apos;tags&apos;: [&apos;华语&apos;, &apos;流行&apos;, &apos;治愈&apos;],</span><br><span class="line">	&apos;playCount&apos;: 4370831,</span><br><span class="line">	&apos;trackUpdateTime&apos;: 1546744947197,</span><br><span class="line">	&apos;specialType&apos;: 0,</span><br><span class="line">	&apos;totalDuration&apos;: 0,</span><br><span class="line">	&apos;creator&apos;: &#123;</span><br><span class="line">		&apos;defaultAvatar&apos;: False,</span><br><span class="line">		&apos;province&apos;: 440000,</span><br><span class="line">		&apos;authStatus&apos;: 0,</span><br><span class="line">		&apos;followed&apos;: False,</span><br><span class="line">		&apos;avatarUrl&apos;: &apos;http://p1.music.126.net/NbMIANWbmL6PVBmduaDzqA==/109951163776645958.jpg&apos;,</span><br><span class="line">		&apos;accountStatus&apos;: 0,</span><br><span class="line">		&apos;gender&apos;: 1,</span><br><span class="line">		&apos;city&apos;: 441500,</span><br><span class="line">		&apos;birthday&apos;: 845481600000,</span><br><span class="line">		&apos;userId&apos;: 49341371,</span><br><span class="line">		&apos;userType&apos;: 200,</span><br><span class="line">		&apos;nickname&apos;: &apos;一点波澜-&apos;,</span><br><span class="line">		&apos;signature&apos;: &apos;激不起一点波澜。&apos;,</span><br><span class="line">		&apos;description&apos;: &apos;&apos;,</span><br><span class="line">		&apos;detailDescription&apos;: &apos;&apos;,</span><br><span class="line">		&apos;avatarImgId&apos;: 109951163776645950,</span><br><span class="line">		&apos;backgroundImgId&apos;: 109951163373553600,</span><br><span class="line">		&apos;backgroundUrl&apos;: &apos;http://p1.music.126.net/O3aDHMNl_VW7GgK2VnGz9Q==/109951163373553592.jpg&apos;,</span><br><span class="line">		&apos;authority&apos;: 0,</span><br><span class="line">		&apos;mutual&apos;: False,</span><br><span class="line">		&apos;expertTags&apos;: [&apos;华语&apos;, &apos;流行&apos;, &apos;欧美&apos;],</span><br><span class="line">		&apos;experts&apos;: None,</span><br><span class="line">		&apos;djStatus&apos;: 10,</span><br><span class="line">		&apos;vipType&apos;: 11,</span><br><span class="line">		&apos;remarkName&apos;: None,</span><br><span class="line">		&apos;avatarImgIdStr&apos;: &apos;109951163776645958&apos;,</span><br><span class="line">		&apos;backgroundImgIdStr&apos;: &apos;109951163373553592&apos;,</span><br><span class="line">		&apos;avatarImgId_str&apos;: &apos;109951163776645958&apos;</span><br><span class="line">	&#125;,</span><br><span class="line">	&apos;tracks&apos;: None,</span><br><span class="line">	&apos;subscribers&apos;: [&#123;</span><br><span class="line">		&apos;defaultAvatar&apos;: False,</span><br><span class="line">		&apos;province&apos;: 440000,</span><br><span class="line">		&apos;authStatus&apos;: 0,</span><br><span class="line">		&apos;followed&apos;: False,</span><br><span class="line">		&apos;avatarUrl&apos;: &apos;http://p1.music.126.net/_XE9wV7-4JlWUPf51pnM_w==/109951163772509594.jpg&apos;,</span><br><span class="line">		&apos;accountStatus&apos;: 0,</span><br><span class="line">		&apos;gender&apos;: 2,</span><br><span class="line">		&apos;city&apos;: 440700,</span><br><span class="line">		&apos;birthday&apos;: -2209017600000,</span><br><span class="line">		&apos;userId&apos;: 515582083,</span><br><span class="line">		&apos;userType&apos;: 0,</span><br><span class="line">		&apos;nickname&apos;: &apos;小心我锤爆你&apos;,</span><br><span class="line">		&apos;signature&apos;: &apos;&apos;,</span><br><span class="line">		&apos;description&apos;: &apos;&apos;,</span><br><span class="line">		&apos;detailDescription&apos;: &apos;&apos;,</span><br><span class="line">		&apos;avatarImgId&apos;: 109951163772509600,</span><br><span class="line">		&apos;backgroundImgId&apos;: 109951163772503820,</span><br><span class="line">		&apos;backgroundUrl&apos;: &apos;http://p1.music.126.net/DQiWNBKXye4i_pbaSzUi9A==/109951163772503826.jpg&apos;,</span><br><span class="line">		&apos;authority&apos;: 0,</span><br><span class="line">		&apos;mutual&apos;: False,</span><br><span class="line">		&apos;expertTags&apos;: None,</span><br><span class="line">		&apos;experts&apos;: None,</span><br><span class="line">		&apos;djStatus&apos;: 0,</span><br><span class="line">		&apos;vipType&apos;: 0,</span><br><span class="line">		&apos;remarkName&apos;: None,</span><br><span class="line">		&apos;avatarImgIdStr&apos;: &apos;109951163772509594&apos;,</span><br><span class="line">		&apos;backgroundImgIdStr&apos;: &apos;109951163772503826&apos;,</span><br><span class="line">		&apos;avatarImgId_str&apos;: &apos;109951163772509594&apos;</span><br><span class="line">	&#125;],</span><br><span class="line">	&apos;subscribed&apos;: None,</span><br><span class="line">	&apos;commentThreadId&apos;: &apos;A_PL_0_2468145627&apos;,</span><br><span class="line">	&apos;newImported&apos;: False,</span><br><span class="line">	&apos;adType&apos;: 0,</span><br><span class="line">	&apos;highQuality&apos;: False,</span><br><span class="line">	&apos;privacy&apos;: 0,</span><br><span class="line">	&apos;ordered&apos;: True,</span><br><span class="line">	&apos;anonimous&apos;: False,</span><br><span class="line">	&apos;shareCount&apos;: 520,</span><br><span class="line">	&apos;coverImgId_str&apos;: &apos;109951163602371733&apos;,</span><br><span class="line">	&apos;commentCount&apos;: 403,</span><br><span class="line">	&apos;alg&apos;: &apos;alg_sq_topn_lr&apos;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>我们将第一个文档，即第一页歌单数据转化为数据框，并查看其数据维度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.DataFrame(num.iloc[0]).shape)</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(20, 33)</span><br></pre></td></tr></table></figure></p>
+<p>一共有20行，33列。即第一页的20个歌单中，每个歌单都有33个字段。<br>将66页的所有歌单合并到一起，查看数据维度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result=pd.DataFrame(num.iloc[0])</span><br><span class="line">for i in range(1,66):</span><br><span class="line">    data2=pd.DataFrame(num.iloc[i])</span><br><span class="line">    result=pd.concat([result,data2],ignore_index=True)</span><br><span class="line">print(result.shape)</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1306, 33)</span><br></pre></td></tr></table></figure></p>
+<p>所有全部歌单一共有1306个，每个歌单33个字段。<br>查看行名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(result.columns.values.tolist())</span><br></pre></td></tr></table></figure></p>
+<p>33个字段为下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;adType&apos;, &apos;alg&apos;, &apos;anonimous&apos;, &apos;cloudTrackCount&apos;, &apos;commentCount&apos;, &apos;commentThreadId&apos;, &apos;coverImgId&apos;, &apos;coverImgId_str&apos;, &apos;coverImgUrl&apos;, &apos;createTime&apos;, &apos;creator&apos;, &apos;description&apos;, &apos;highQuality&apos;, &apos;id&apos;, &apos;name&apos;, &apos;newImported&apos;, &apos;ordered&apos;, &apos;playCount&apos;, &apos;privacy&apos;, &apos;shareCount&apos;, &apos;specialType&apos;, &apos;status&apos;, &apos;subscribed&apos;, &apos;subscribedCount&apos;, &apos;subscribers&apos;, &apos;tags&apos;, &apos;totalDuration&apos;, &apos;trackCount&apos;, &apos;trackNumberUpdateTime&apos;, &apos;trackUpdateTime&apos;, &apos;tracks&apos;, &apos;updateTime&apos;, &apos;userId&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>播放数量最多的TOP20歌单<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">result1=result.sort_values(by=[&apos;playCount&apos;],ascending = False)</span><br><span class="line">result1[&apos;playCount&apos;]</span><br><span class="line">result2=pd.concat([result1[&apos;name&apos;],result1[&apos;playCount&apos;]],axis=1,ignore_index=False)</span><br><span class="line">print((pd.DataFrame(result2)).shape)</span><br><span class="line">print((pd.DataFrame(result2)).head)</span><br><span class="line">data=result2</span><br><span class="line">data.index=data[&apos;name&apos;]</span><br><span class="line">colors = &apos;#6D6D6D&apos; # 设置标题颜色为灰色</span><br><span class="line">color_line = &apos;#CC2824&apos;</span><br><span class="line">fontsize_title = 20</span><br><span class="line">from IPython.core.pylabtools import figsize # import figsize</span><br><span class="line">figsize(12.5, 4) # 设置 figsize</span><br><span class="line">plt.rcParams[&apos;savefig.dpi&apos;] = 200 #图片像素</span><br><span class="line">#plt.rcParams[&apos;figure.dpi&apos;] = 200 #分辨率</span><br><span class="line"># 默认的像素：[6.0,4.0]，分辨率为100，图片尺寸为 600&amp;400</span><br><span class="line"># 指定dpi=200，图片尺寸为 1200*800</span><br><span class="line"># 指定dpi=300，图片尺寸为 1800*1200</span><br><span class="line"># 设置figsize可以在不改变分辨率情况下改变比例</span><br><span class="line"># 我们使用R语言中ggplot的风格</span><br><span class="line">plt.style.use(&apos;ggplot&apos;)</span><br><span class="line">data[1:21].plot(kind=&apos;barh&apos;,color=color_line).invert_yaxis()</span><br><span class="line">#使用 pd.Series把dataframe转成Series</span><br><span class="line">#data = pd.Series(data[&apos;playCount&apos;].values)</span><br><span class="line">#for y,x in enumerate(list(data[&apos;playCount&apos;].values[1:21])):</span><br><span class="line">for y,x in enumerate(list(data.iloc[:,1][1:21].values)):</span><br><span class="line">    plt.text(x+1600000,y+0.3,&apos;%s&apos; %round(x,1),ha=&apos;center&apos;,color=colors)</span><br><span class="line">    #plt.text(x-20,y+0.3,&apos;%s&apos; %x,color=colors)</span><br><span class="line">plt.xlabel(&apos;播放数量&apos;)</span><br><span class="line">plt.ylabel(&apos;歌单名称&apos;)</span><br><span class="line">plt.title(&apos;播放数量最多的TOP20歌单&apos;, color = colors, fontsize=fontsize_title)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.savefig(&apos;播放数量最多的TOP20歌单.png&apos;,dpi=200)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-681b2bbb01eb635b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>显示为文本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">name</span><br><span class="line">听说你也在找好听的华语歌                  41094772</span><br><span class="line">那些喜欢到循环播放的歌                   37185064</span><br><span class="line">失恋必听歌单 | 因为你突然听懂了很多歌          31393852</span><br><span class="line">2018年度最热新歌TOP100              30460302</span><br><span class="line">别急，甜甜的恋爱马上就轮到你了               27107300</span><br><span class="line">温柔暴击 | 沉溺于男友音的甜蜜乡             18519378</span><br><span class="line">最是粤语最为情深 也唯独你最难忘怀             17338788</span><br><span class="line">提神醒脑 疯狂抖腿魔性摇头.GIF             15403695</span><br><span class="line">Hip-hop | 少女心狙击手              12368797</span><br><span class="line">你最想对暗恋的人 说的一句话是什么             11561604</span><br><span class="line">风月无憾 | 你是我有关青春 最美的句读           9827816</span><br><span class="line">新的一年，希望你喜欢的人也喜欢你               8841251</span><br><span class="line">【2018年度电影精选| Ready Story 】     8747021</span><br><span class="line">&quot;若是心怀旧梦 就别再无疾而终&quot;               8706438</span><br><span class="line">“长大”这两个字，孤独得连偏旁都没有             8587671</span><br><span class="line">如何用手机铃声惊艳四座？ 日语篇               8059432</span><br><span class="line">再见大侠：武侠小说泰斗金庸逝世                7993862</span><br><span class="line">KTV必点：有没有一首歌，唱着唱着就泪奔           7890135</span><br><span class="line">你放弃过一个爱了很久的人吗？                 7818393</span><br><span class="line">欧美·耳朵怀孕 | 盘点那些流行歌手             7497257</span><br></pre></td></tr></table></figure></p>
+<p>播放量第一的为《听说你也在找好听的华语歌 》，播放数高达4109万多。第二为《那些喜欢到循环播放的歌》，播放量为3718万多。前20个歌单的播放量最少的也在749万以上。究其原因，有以下几点：</p>
+<ul>
+<li>歌单名本身很具诱惑力，很适合没有固定听歌意向的群体，较为大众化，是绝大多数人的首选。像《别急，甜甜的恋爱马上就轮到你了》《温柔暴击 | 沉溺于男友音的甜蜜乡》《你最想对暗恋的人 说的一句话是什么》《风月无憾 | 你是我有关青春 最美的句读》等，光听名字就很吸引人。</li>
+<li>创建人<a href="https://music.163.com/#/user/home?id=493707309" target="_blank" rel="noopener">鹿白川</a>，有网易云达人认证，粉丝数也高达9万多，实打实的大V。标签：音乐(华语、流行、欧美)、资讯(生活)；个人介绍：话少慢热不喜交际 / 不推广 勿扰；请问都这个水平了还需要推广么？？？<br>其创建的歌单播放量动辄上百万，上千万，看来属于网易云音乐中的主力人物。他的主页：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-89113ae02b1ead39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>歌单下的歌曲本身质量就很高，这也是最重要的一点。</li>
+</ul>
+<p>相反，查看播放量最少的20首：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">中岛美嘉 Special Live 2019 广州/上海        85</span><br><span class="line">霉霉丨泰勒斯威·夫特的Style        82</span><br><span class="line">C95东方专辑收录（一专一首）        80</span><br><span class="line">CLUB MIAMI HOHHOT 百大DJ-DENIZ KOYU        78</span><br><span class="line">战歌舞曲        76</span><br><span class="line">vlog ❤        74</span><br><span class="line">＊我们自雪乡去往雾夏＊（贰）        73</span><br><span class="line">伴读喵自习室        71</span><br><span class="line">细腻莫扎特        69</span><br><span class="line">【开业歌曲】新店开业喜庆歌曲大全100首        67</span><br><span class="line">邓丽君1982年香港伊丽莎白体育馆演唱会        65</span><br><span class="line">⚡︎ 2019年精选电音 待制作 敬请期待        62</span><br><span class="line"> 一周日语新歌（12/29～01/04）        60</span><br><span class="line">祺鑫时光轴2018年下        58</span><br><span class="line">【纯音乐】你是否听过，那属于夏日的美好        49</span><br><span class="line">方灿的Spotify歌单        42</span><br><span class="line">冷门纯音｜ 轻叩心扉，静享惬意好时光        31</span><br><span class="line">【我爱学习】学习解压轻音乐        29</span><br><span class="line">【轻音乐】如何优雅地睡觉        24</span><br><span class="line">思念的解药 即是归乡        19</span><br></pre></td></tr></table></figure></p>
+<p>恰恰和上面三点条件都相反，也难怪不太受欢迎。</p>
+<h3 id="4-2-网易云用户"><a href="#4-2-网易云用户" class="headerlink" title="4.2 网易云用户"></a>4.2 网易云用户</h3><h4 id="4-2-1-数据库简单查询分析"><a href="#4-2-1-数据库简单查询分析" class="headerlink" title="4.2.1 数据库简单查询分析"></a>4.2.1 数据库简单查询分析</h4><p>筛选同在湖南的网易云小伙伴：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users2 where profile.city = 650100</span><br></pre></td></tr></table></figure></p>
+<p>从数据库里得到了315条记录：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-afddfd5cf5b4b954.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>筛选地处长沙等级在5级以上的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users2 where profile.city = 430100 and level&gt;5</span><br></pre></td></tr></table></figure></p>
+<p>得到了69条记录：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-90a8324c805ed75f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>其中挑选了一个id为1389014，昵称叫猜猜寻的进行分析</p>
+<h4 id="4-2-2-关注者的地区分布"><a href="#4-2-2-关注者的地区分布" class="headerlink" title="4.2.2 关注者的地区分布"></a>4.2.2 关注者的地区分布</h4><p>导入之前爬取到的用户数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pymongo</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">client = pymongo.MongoClient(host=&apos;localhost&apos;, port=27017)</span><br><span class="line">db = client[&apos;music&apos;]</span><br><span class="line">collection = db[&apos;users3&apos;]</span><br><span class="line"># 将数据库数据转为dataFrame</span><br><span class="line">user = pd.DataFrame(list(collection.find()))</span><br></pre></td></tr></table></figure></p>
+<p>查看数据维度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(user.shape)</span><br></pre></td></tr></table></figure></p>
+<p>有14974个用户，每个用户下面有13个字段信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(14974, 13)</span><br></pre></td></tr></table></figure></p>
+<p>查看字段名称：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;_id&apos;, &apos;adValid&apos;, &apos;bindings&apos;, &apos;code&apos;, &apos;createDays&apos;, &apos;createTime&apos;, &apos;level&apos;, &apos;listenSongs&apos;, &apos;mobileSign&apos;, &apos;pcSign&apos;, &apos;peopleCanSeeMyPlayRecord&apos;, &apos;profile&apos;, &apos;userPoint&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>我们选取其中的profile进行分析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">profile=pd.DataFrame(user[&apos;profile&apos;])</span><br></pre></td></tr></table></figure></p>
+<p>profile下面有41个字段，我们将14974个用户的profile字段下面的其中两个字段：province和userId提取出来，合并成一个数据框。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">result=pd.DataFrame([[9003,110000]])</span><br><span class="line">for i in range(1,14974):</span><br><span class="line">    province=profile.iloc[i][0].get(&apos;province&apos;)</span><br><span class="line">    userId=profile.iloc[i][0].get(&apos;userId&apos;)</span><br><span class="line">    #列合并</span><br><span class="line">    userInfo=pd.DataFrame([[userId,province]])</span><br><span class="line">    #行合并</span><br><span class="line">    result=pd.concat([result,userInfo],ignore_index=True)</span><br><span class="line">#列命名</span><br><span class="line">result.columns = [&apos;userId&apos;,&apos;province&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>统计每个省份所包含的网易云音乐用户数量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = result.groupby(result[&apos;province&apos;]).count()</span><br><span class="line">data.to_csv(&quot;userProvinceInfo.csv&quot;, sep=&apos;,&apos;, header=True, index=False)</span><br></pre></td></tr></table></figure></p>
+<p>由于原始数据中province的值为行政区划代码，需要根据<a href="https://wenku.baidu.com/view/d4a14ca20d22590102020740be1e650e53eacf52.html" target="_blank" rel="noopener">行政区划代码表</a>还原用户的所在省份信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">install.packages(&quot;xlsx&quot;)</span><br><span class="line">library(xlsx) </span><br><span class="line">userInfo=read.csv(&quot;userProvinceInfo.csv&quot;)</span><br><span class="line">code=read.table(&quot;clipboard&quot;,header = TRUE)</span><br><span class="line">pro=matrix(0,nrow(userInfo),1)</span><br><span class="line">for(i in 3:36)&#123;</span><br><span class="line">  pro[i-2,1]=as.matrix(code[which(userInfo[i,2]==code[,1]),2])[1,1]</span><br><span class="line">&#125;</span><br><span class="line">pro=pro[-c(35,36,37),]</span><br><span class="line">data=cbind(userInfo[-c(35,36,37),1],pro)</span><br><span class="line">colnames(data)&lt;-c(&quot;userCounts&quot;,&quot;Province&quot;)</span><br><span class="line">write.xlsx(x = data, file = &quot;data.xlsx&quot;,</span><br><span class="line">           sheetName = &quot;data&quot;, row.names = FALSE)</span><br></pre></td></tr></table></figure></p>
+<p>利用得到的最终数据，基于可视化工具Power Map 2016，制作演示视频，并将其转化为GIF（简书不能上传视频）。但是GIF不能超过10M，下面是压缩后的，很模糊。原文件大小70M，高清，会看得很舒服。制作好的原演示视频链接:<a href="https://pan.baidu.com/s/1SvyJ8Xtbf9MzUFLxiRYwBA" target="_blank" rel="noopener">网易云音乐中国分布演示视频</a><br><img src="https://upload-images.jianshu.io/upload_images/13155641-1794b832e1007865.GIF?imageMogr2/auto-orient/strip" alt="网易云音乐中国分布演示.gif"></p>
+<p>是不是炫酷到爆炸，有型到喷汁？？！！<br>在第二个深入镜头，你可以看到交通路线，有没有百度地图的即视感？！再深入点，我可以找到你的位置。</p>
+<h2 id="五、文本相似计算原理"><a href="#五、文本相似计算原理" class="headerlink" title="五、文本相似计算原理"></a>五、文本相似计算原理</h2><h3 id="5-1-TF-IDF"><a href="#5-1-TF-IDF" class="headerlink" title="5.1 TF-IDF"></a>5.1 TF-IDF</h3><p>我们在判断一个词的重要性的时候，不能仅仅依靠词频来处理，因此引入了TF-IDF值。TF-IDF是Term Frequency -  Inverse Document Frequency的缩写，即“词频-逆文本频率”。它由两部分组成，TF和IDF。</p>
+<p>TF是词频，我们后面做的词条—文档矩阵给出了文本中各个词的出现频率统计，并作为文本特征，这个很好理解。而IDF，即“逆文本频率”，则反映了一个词在所有文本中出现的频率，如果一个词在很多的文本中出现，那么它的IDF值应该低。反过来，如果一个词在比较少的文本中出现，那么它的IDF值应该高。比如一些专业的名词如“Machine Learning”。这样的词IDF值应该高。一个极端的情况，如果一个词在所有的文本中都出现，那么它的IDF值应该为0。</p>
+<p>上面是从定性上说明的IDF的作用，那么如何对一个词的IDF进行定量分析呢？这里直接给出一个词x的IDF的基本公式如下：</p>
+<pre><code>IDF(x)=log(N/N(x))                          (1)
+</code></pre><p>其中，N代表语料库中文本的总数，而N(x)代表语料库中包含词x的文本总数。<br>当然，在一些特殊的情况IDF计算会有一些小问题，比如某一个生僻词在语料库中没有，这样我们的分母为0， IDF没有意义了。所以常用的IDF我们需要做一些平滑，使语料库中没有出现的词也可以得到一个合适的IDF值。平滑的方法有很多种，最常见的IDF平滑后的公式之一为：</p>
+<pre><code>IDF(x)=log((N+1)/(N(x)+1))+1                  (2)
+</code></pre><p>有了IDF的定义，我们就可以计算某一个词的TF-IDF值了：</p>
+<pre><code>TF−IDF(x)=TF(x)∗IDF(x)                        (3)
+</code></pre><p>其中TF(x)指词x在当前文本中的词频。</p>
+<h3 id="5-2-Doc2Bow模型"><a href="#5-2-Doc2Bow模型" class="headerlink" title="5.2 Doc2Bow模型"></a>5.2 Doc2Bow模型</h3><p>Word2vec和Doc2Bow同属两位学术大牛Quoc Le 和 Tomas Mikolov发明的。</p>
+<p>在2014年的《Distributed Representations of Sentences and Documents》所提出文章向量（Documents vector），或者称句向量（Sentences vector），当然在文章中，统一称这种向量为Paragraph Vector。</p>
+<p>Word2vec涉及到很多数学模型，囊括了词向量的理解、sigmoid函数、逻辑回归、Bayes公式、Huffman编码、n-gram模型、浅层神经网络、激活函数、最大似然及其梯度推导、随机梯度下降法、词向量与模型参数的更新公式、CBOW模型和 Skip-gram模型、Hierarchical Softmax算法和Negative Sampling算法等。当然还会结合google发布的C源码（好像才700+行），讲述相关部分的实现细节，比如Negative Sampling算法如何随机采样、参数更新的细节、sigmod的快速近似计算、词典的hash存储、低频与高频词的处理、窗口内的采样方式、自适应学习、参数初始化、w2v实际上含有两中方法等，用C代码仅仅700+行实现，并加入了诸多技巧。原文可以参见以下链接：</p>
+<hr>
+<p>作者：林海山波<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/lenbow/article/details/52120230" target="_blank" rel="noopener">https://blog.csdn.net/lenbow/article/details/52120230</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+<h3 id="5-3-计算相似度"><a href="#5-3-计算相似度" class="headerlink" title="5.3 计算相似度"></a>5.3 计算相似度</h3><p>本文使用欧氏距离度量相似度。欧几里得度量（euclidean metric）（也称欧式距离）是一个通常采用的距离定义，指在m维空间中两个点之间的真实距离，或者向量的自然长度（即该点到原点的距离）。<br>0ρ = sqrt( (x1-x2)^2+ (y1-y2)^2 )<br>similarity = 1/(op + 1)<br>最终的similarity就是相似度评价的值。</p>
+<h2 id="六、相似用户推荐（Python之Gensim版本）"><a href="#六、相似用户推荐（Python之Gensim版本）" class="headerlink" title="六、相似用户推荐（Python之Gensim版本）"></a>六、相似用户推荐（Python之Gensim版本）</h2><h3 id="6-1-Gensim"><a href="#6-1-Gensim" class="headerlink" title="6.1 Gensim"></a>6.1 Gensim</h3><p>用Python做过文本挖掘的想必知道Gensim，首先我们看维基百科对gensim的解释：</p>
+<p><strong>Gensim</strong> is a robust <a href="https://en.wikipedia.org/wiki/Open-source_software" title="Open-source software" target="_blank" rel="noopener">open-source</a> <a href="https://en.wikipedia.org/wiki/Vector_space_model" title="Vector space model" target="_blank" rel="noopener">vector space modeling</a> and <a href="https://en.wikipedia.org/wiki/Topic_model" title="Topic model" target="_blank" rel="noopener">topic modeling</a> toolkit implemented in <a href="https://en.wikipedia.org/wiki/Python_(programming_language" target="_blank" rel="noopener">Python</a> “Python (programming language)”). It uses <a href="https://en.wikipedia.org/wiki/NumPy" title="NumPy" target="_blank" rel="noopener">NumPy</a>, <a href="https://en.wikipedia.org/wiki/SciPy" title="SciPy" target="_blank" rel="noopener">SciPy</a> and optionally <a href="https://en.wikipedia.org/wiki/Cython" title="Cython" target="_blank" rel="noopener">Cython</a> for performance. Gensim is specifically designed to handle large text collections, using data streaming and efficient incremental algorithms, which differentiates it from most other scientific software packages that only target batch and in-memory processing.</p>
+<p><strong>Gensim</strong> includes implementations of <a href="https://en.wikipedia.org/wiki/Tf-idf" title="Tf-idf" target="_blank" rel="noopener">tf-idf</a>, <a href="https://en.wikipedia.org/wiki/Locality-sensitive_hashing" title="Locality-sensitive hashing" target="_blank" rel="noopener">random projections</a>, <a href="https://en.wikipedia.org/wiki/Word2vec" title="Word2vec" target="_blank" rel="noopener">word2vec</a> and document2vec algorithms,<a href="https://en.wikipedia.org/wiki/Hierarchical_Dirichlet_process" title="Hierarchical Dirichlet process" target="_blank" rel="noopener">hierarchical Dirichlet processes</a> (HDP), <a href="https://en.wikipedia.org/wiki/Latent_semantic_analysis" title="Latent semantic analysis" target="_blank" rel="noopener">latent semantic analysis</a> (LSA, LSI, SVD) and <a href="https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation" title="Latent Dirichlet allocation" target="_blank" rel="noopener">latent Dirichlet allocation</a> (LDA), including <a href="https://en.wikipedia.org/wiki/Distributed_computing" title="Distributed computing" target="_blank" rel="noopener">distributed</a><a href="https://en.wikipedia.org/wiki/Parallel_computing" title="Parallel computing" target="_blank" rel="noopener">parallel</a> versions.</p>
+<p>也就是说，gensim是一个python的函数包，gensim包含了TF-IDF、随机投影、word2vec和document2vec算法的实现，分层Dirchlet过程（HDP），潜在语义分析（LSA）和潜在Dirichlet分配即主题模型（LDA），包括分布式并行版本。主要是用来主题建模、文档索引以及使用大规模语料数据的相似性检索，是文本挖掘在NLP领域里处理相当有效、得力的一个函数包。</p>
+<h3 id="6-2-数据预处理"><a href="#6-2-数据预处理" class="headerlink" title="6.2 数据预处理"></a>6.2 数据预处理</h3><p>说明：为了更广泛地使大家熟悉多种语言，接下来我用R语言来处理。</p>
+<p>首先，以之前我们爬到的陈百强大哥的经典歌曲《偏偏喜欢你》的1024页的评论文本信息为例展开说明，<a href="https://blog.csdn.net/shuihanzhu/article/details/78606440" target="_blank" rel="noopener">R语言连接Mongodb数据库</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">library(jsonlite)</span><br><span class="line">library(mongolite)</span><br><span class="line">library(&quot;openssl&quot;)</span><br><span class="line">con &lt;- mongo(collection = &quot;陈百强&quot;,db = &quot;comments&quot;, url = &quot;mongodb://localhost&quot;)</span><br><span class="line">mydata &lt;- con$find()</span><br><span class="line">dim(mydata)</span><br></pre></td></tr></table></figure></p>
+<p>得到了1025个文档，2列，第一是id，弃，第二列是comments，留。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1025    2</span><br></pre></td></tr></table></figure></p>
+<p>我们查看它的第二列即评论：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lengths(mydata[&apos;comments&apos;][3,])</span><br></pre></td></tr></table></figure></p>
+<p>没错，一条评论信息下面有16个字段，但是R语言对这种json格式的数据处理不是很成熟，目前有rjson包，但是存在bug，其替代品RJSONIO也没有那么完善。这一阶段的数据处理我们改用Python。（这是我花费了一下午时间后的结论。多么痛的领悟。。。）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import pymongo</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">client = pymongo.MongoClient(host=&apos;localhost&apos;, port=27017)</span><br><span class="line">db = client[&apos;comments&apos;]</span><br><span class="line">collection = db[&apos;陈百强&apos;]</span><br><span class="line"># 将数据库数据转为dataFrame</span><br><span class="line">data = pd.DataFrame(list(collection.find()))</span><br><span class="line">num=data[&apos;comments&apos;]</span><br><span class="line">result=pd.DataFrame(num.iloc[0])</span><br><span class="line">for i in range(1,1025):</span><br><span class="line">    data2=pd.DataFrame(num.iloc[i])</span><br><span class="line">    result=pd.concat([result,data2],ignore_index=True)</span><br></pre></td></tr></table></figure></p>
+<p>查看其维度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(result.shape)</span><br></pre></td></tr></table></figure></p>
+<p>故有《偏偏喜欢你》下面有20500条评论，每条评论有16个字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(20500, 16)</span><br></pre></td></tr></table></figure></p>
+<p>我们选我们想要的文本字段和user字段下面的userID。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text.rename(columns=&#123;&apos;w&apos;:&apos;userID&apos;, &apos;x&apos;:&apos;context&apos;&#125;, inplace = True)</span><br><span class="line">text[&apos;context&apos;]=result[&apos;content&apos;]</span><br><span class="line">for i in range(0,20500):</span><br><span class="line">    text.iloc[i,0]=result[&apos;user&apos;].iloc[i][&apos;userId&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>得到20500行2列的数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">userID                                            context</span><br><span class="line">0       328901978                                            都是有故事的人</span><br><span class="line">1      1724358802                                       每天都要听至爱Danny</span><br><span class="line">2       451250610                                 对呀，你就从来没喜欢过我。一点都煤油</span><br><span class="line">3       554348857                                            沁入心脾的温柔</span><br><span class="line">4      1296389446                                           最近好喜欢这首歌</span><br><span class="line">5       303721726                                             今日点歌③.</span><br><span class="line">6      1654009353                                          偏偏对你没有抵抗力</span><br><span class="line">7      1654009353  那一次我们擦肩而过，我害怕我们会像电影里的情景一样错过，所以我没有走，我一直看着你走，可是你...</span><br><span class="line">8       357343565                                “我喜欢你”珍贵，奈何听的人不珍惜……</span><br><span class="line">9       293896875                                         偏偏喜欢你  王雷雷</span><br><span class="line">10     1510414811                                         对啊，这是为什么呢。</span><br><span class="line">11     1574359988                                              对，好浪漫</span><br><span class="line">12     1333924430                            小时候有个小的收音机，好开心，睡觉都舍不得放下</span><br><span class="line">13       64188725                                                 好听</span><br><span class="line">14      482121141                                     这些歌曲都是经典作品[亲亲]</span><br><span class="line">15      427963594                                      偏偏喜欢你，我的翩翩夫人。</span><br><span class="line">16     1382017788                                  以爱情  以时光\n\n纪贯新~❤</span><br><span class="line">17       46656982  我和他来一家店吃饭，店里在放这首歌，他问我，你知道这首歌是什么吗？我听了一下说不知道，他说：...</span><br><span class="line">18      425557078                   幸福到疼……\r\r有一个人曾让我知道\r寄生于世原来是那么的好</span><br><span class="line">19      568096298                             超级喜欢的一首歌，偏偏喜欢你【大赞】[爱心]</span><br><span class="line">20      412381224                                         他可能会单手开法拉利</span><br><span class="line">21      301593622                            [多多大笑][多多大笑][多多大笑]笑着活下去</span><br><span class="line">22     1455906926                                             再见吧大渣男</span><br><span class="line">23     1670031755                                       [憨笑]我比你还俗 更穷</span><br><span class="line">24      301593622                                 现在一心只想搞钱，我比较俗，太穷了！</span><br><span class="line">25     1730181168                                         哈哈哈哈这个年代感哦</span><br><span class="line">26      279684331                                        偏偏喜欢的就是得不到！</span><br><span class="line">27      621542625                                               阿Lan</span><br><span class="line">28     1328014893                             曾经他为我唱过的歌，到如今听到都心里隐隐作痛</span><br><span class="line">29       51335946                                     爱，直至成伤；之后，就是永远</span><br><span class="line">...           ...                                                ...</span><br><span class="line">20470    62338668                                               nice</span><br><span class="line">20471    62338668  愛上你永遠沒有結果 很好 我現在要放棄了 努力忘記你 不想讓自己為了一個沒結果的人那麼難受 ...</span><br><span class="line">20472    68320201  忽然想起和一个朋友的对话，她因为家庭原因极度缺乏安全感。\n我怕…\n你怕什么？\n怕他喜欢...</span><br><span class="line">20473   246752393                                                張國榮</span><br><span class="line">20474   134205876        还记得那时地方电视台点播的一些曲子吗？重点中间无广告，那才是乐趣。某某点歌给谁谁谁……</span><br><span class="line">20475   122104993  班固 《西都赋》“愿宾摅怀旧之蓄念，发思古之幽情。” 元稹 《赠吴渠州从姨兄士则》诗“泪因生...</span><br><span class="line">20476   100442347                中午广播无意听到这首歌，然后特意关注了聊大广播台微博找到歌单！[大哭]</span><br><span class="line">20477   118207115                                               别咒王杰</span><br><span class="line">20478   116595775                      我爸只会唱一首歌，就这首歌把我妈娶到手了。[憨笑][憨笑]</span><br><span class="line">20479    60109810                                    2000年生却偏偏喜欢80年代</span><br><span class="line">20480    63357164                                    情爱 是什么 只有呵呵[大哭]</span><br><span class="line">20481    62338668                                               [可爱]</span><br><span class="line">20482    95087236                                         对啊，为何偏偏喜欢你</span><br><span class="line">20483    68320201                                               [大笑]</span><br><span class="line">20484    79282042                                       [皱眉][皱眉][皱眉]</span><br><span class="line">20485    83512955                             听过这首歌的人都是有故事的男人和女人[跳舞]</span><br><span class="line">20486    67061365    上班特别累的时候听到香港的经典感觉整个世界都属于我，要是来一杯纯正的香港奶茶就更好了。[大笑]</span><br><span class="line">20487    71401843                                     当年的录像厅前面就放的这首歌</span><br><span class="line">20488   103882075                                           他还没死[大哭]</span><br><span class="line">20489    62338668                                               我01的</span><br><span class="line">20490    62338668                                               nice</span><br><span class="line">20491    62338668  愛上你永遠沒有結果 很好 我現在要放棄了 努力忘記你 不想讓自己為了一個沒結果的人那麼難受 ...</span><br><span class="line">20492    68320201  忽然想起和一个朋友的对话，她因为家庭原因极度缺乏安全感。\n我怕…\n你怕什么？\n怕他喜欢...</span><br><span class="line">20493   246752393                                                張國榮</span><br><span class="line">20494   134205876        还记得那时地方电视台点播的一些曲子吗？重点中间无广告，那才是乐趣。某某点歌给谁谁谁……</span><br><span class="line">20495   122104993  班固 《西都赋》“愿宾摅怀旧之蓄念，发思古之幽情。” 元稹 《赠吴渠州从姨兄士则》诗“泪因生...</span><br><span class="line">20496   100442347                中午广播无意听到这首歌，然后特意关注了聊大广播台微博找到歌单！[大哭]</span><br><span class="line">20497   118207115                                               别咒王杰</span><br><span class="line">20498   116595775                      我爸只会唱一首歌，就这首歌把我妈娶到手了。[憨笑][憨笑]</span><br><span class="line">20499    60109810                                    2000年生却偏偏喜欢80年代</span><br><span class="line"></span><br><span class="line">[20500 rows x 2 columns]</span><br></pre></td></tr></table></figure></p>
+<p>将userID一列保存为列名，重命名行名、列名，并保存数据到文件“DealtedData.csv”中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names=pd.DataFrame(data.iloc[:,0])</span><br><span class="line">data.rename(index=names.iloc[:,0],columns=&#123;2:&apos;context&apos;&#125;, inplace = True)</span><br><span class="line">data.to_csv(r&apos;DealtedData.csv&apos;,encoding=&apos;gbk&apos;,index=True,header=True)</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-3-文本预处理"><a href="#6-3-文本预处理" class="headerlink" title="6.3 文本预处理"></a>6.3 文本预处理</h3><p>导入数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.chdir(&apos;G:\\项目\\网易云音乐评论\\文本挖掘&apos;)  # 打印当前工作目录</span><br><span class="line">import pandas as pd</span><br><span class="line">data = pd.read_csv(r&quot;DealtedData.csv&quot;,encoding=&apos;gbk&apos;, sep=&apos;,&apos;,index_col=0,header=0)</span><br><span class="line">data.head</span><br></pre></td></tr></table></figure></p>
+<p>数据格式为下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;bound method NDFrame.head of                                                        context</span><br><span class="line">328901978                                              都是有故事的人</span><br><span class="line">1724358802                                        每天都要听至爱Danny</span><br><span class="line">451250610                                   对呀，你就从来没喜欢过我。一点都煤油</span><br><span class="line">554348857                                              沁入心脾的温柔</span><br><span class="line">1296389446                                            最近好喜欢这首歌</span><br><span class="line">303721726                                               今日点歌③.</span><br><span class="line">1654009353                                           偏偏对你没有抵抗力</span><br><span class="line">1654009353   那一次我们擦肩而过，我害怕我们会像电影里的情景一样错过，所以我没有走，我一直看着你走，可是你...</span><br><span class="line">357343565                                  “我喜欢你”珍贵，奈何听的人不珍惜……</span><br><span class="line">293896875                                           偏偏喜欢你  王雷雷</span><br><span class="line">1510414811                                          对啊，这是为什么呢。</span><br><span class="line">1574359988                                               对，好浪漫</span><br><span class="line">1333924430                             小时候有个小的收音机，好开心，睡觉都舍不得放下</span><br><span class="line">64188725                                                    好听</span><br><span class="line">482121141                                       这些歌曲都是经典作品[亲亲]</span><br><span class="line">427963594                                        偏偏喜欢你，我的翩翩夫人。</span><br><span class="line">1382017788                           以爱情  以时光\r\r\n\r\r\n纪贯新~?</span><br><span class="line">46656982     我和他来一家店吃饭，店里在放这首歌，他问我，你知道这首歌是什么吗？我听了一下说不知道，他说：...</span><br><span class="line">425557078                                               幸福到疼……</span><br><span class="line">有一个人曾让我知道                                                  NaN</span><br><span class="line">寄生于世原来是那么的好                                                NaN</span><br><span class="line">568096298                               超级喜欢的一首歌，偏偏喜欢你【大赞】[爱心]</span><br><span class="line">412381224                                           他可能会单手开法拉利</span><br><span class="line">301593622                              [多多大笑][多多大笑][多多大笑]笑着活下去</span><br><span class="line">1455906926                                              再见吧大渣男</span><br><span class="line">1670031755                                        [憨笑]我比你还俗 更穷</span><br><span class="line">301593622                                   现在一心只想搞钱，我比较俗，太穷了！</span><br><span class="line">1730181168                                          哈哈哈哈这个年代感哦</span><br><span class="line">279684331                                          偏偏喜欢的就是得不到！</span><br><span class="line">621542625                                                 阿Lan</span><br><span class="line">...                                                        ...</span><br><span class="line">62338668                                                  nice</span><br><span class="line">62338668     愛上你永遠沒有結果 很好 我現在要放棄了 努力忘記你 不想讓自己為了一個沒結果的人那麼難受 ...</span><br><span class="line">68320201     忽然想起和一个朋友的对话，她因为家庭原因极度缺乏安全感。\r\r\n我怕…\r\r\n你怕什...</span><br><span class="line">246752393                                                  張國榮</span><br><span class="line">134205876          还记得那时地方电视台点播的一些曲子吗？重点中间无广告，那才是乐趣。某某点歌给谁谁谁……</span><br><span class="line">122104993    班固?《西都赋》“愿宾摅怀旧之蓄念，发思古之幽情。” 元稹?《赠吴渠州从姨兄士则》诗“泪因生...</span><br><span class="line">100442347                  中午广播无意听到这首歌，然后特意关注了聊大广播台微博找到歌单！[大哭]</span><br><span class="line">118207115                                                 别咒王杰</span><br><span class="line">116595775                        我爸只会唱一首歌，就这首歌把我妈娶到手了。[憨笑][憨笑]</span><br><span class="line">60109810                                       2000年生却偏偏喜欢80年代</span><br><span class="line">63357164                                       情爱 是什么 只有呵呵[大哭]</span><br><span class="line">62338668                                                  [可爱]</span><br><span class="line">95087236                                            对啊，为何偏偏喜欢你</span><br><span class="line">68320201                                                  [大笑]</span><br><span class="line">79282042                                          [皱眉][皱眉][皱眉]</span><br><span class="line">83512955                                听过这首歌的人都是有故事的男人和女人[跳舞]</span><br><span class="line">67061365       上班特别累的时候听到香港的经典感觉整个世界都属于我，要是来一杯纯正的香港奶茶就更好了。[大笑]</span><br><span class="line">71401843                                        当年的录像厅前面就放的这首歌</span><br><span class="line">103882075                                             他还没死[大哭]</span><br><span class="line">62338668                                                  我01的</span><br><span class="line">62338668                                                  nice</span><br><span class="line">62338668     愛上你永遠沒有結果 很好 我現在要放棄了 努力忘記你 不想讓自己為了一個沒結果的人那麼難受 ...</span><br><span class="line">68320201     忽然想起和一个朋友的对话，她因为家庭原因极度缺乏安全感。\r\r\n我怕…\r\r\n你怕什...</span><br><span class="line">246752393                                                  張國榮</span><br><span class="line">134205876          还记得那时地方电视台点播的一些曲子吗？重点中间无广告，那才是乐趣。某某点歌给谁谁谁……</span><br><span class="line">122104993    班固?《西都赋》“愿宾摅怀旧之蓄念，发思古之幽情。” 元稹?《赠吴渠州从姨兄士则》诗“泪因生...</span><br><span class="line">100442347                  中午广播无意听到这首歌，然后特意关注了聊大广播台微博找到歌单！[大哭]</span><br><span class="line">118207115                                                 别咒王杰</span><br><span class="line">116595775                        我爸只会唱一首歌，就这首歌把我妈娶到手了。[憨笑][憨笑]</span><br><span class="line">60109810                                       2000年生却偏偏喜欢80年代</span><br><span class="line"></span><br><span class="line">[20523 rows x 1 columns]&gt;</span><br></pre></td></tr></table></figure></p>
+<p>isnull检测是否含有NaN值，有就返回True。np.any()检测df数据中是否含有等于Ture的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">print(np.any(data.isnull())== True)  </span><br><span class="line">False</span><br></pre></td></tr></table></figure></p>
+<p>显示为TRUE，说明评论里有NAN值，用空str填充：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=data.fillna(&apos; &apos;)</span><br></pre></td></tr></table></figure></p>
+<p>设置训练集和测试集合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from gensim import corpora, models, similarities</span><br><span class="line">import jieba</span><br><span class="line"># 文本集和搜索词</span><br><span class="line">trains = list(data[&apos;context&apos;].iloc[0:20523])</span><br><span class="line">tests= &apos;喜欢你&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-4-对训练集进行分词"><a href="#6-4-对训练集进行分词" class="headerlink" title="6.4 对训练集进行分词"></a>6.4 对训练集进行分词</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">trains = [jieba.lcut(text) for text in trains]</span><br><span class="line">trains</span><br></pre></td></tr></table></figure>
+<p>可以得到list形式的分词表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[[&apos;都&apos;, &apos;是&apos;, &apos;有&apos;, &apos;故事&apos;, &apos;的&apos;, &apos;人&apos;],</span><br><span class="line"> [&apos;每天&apos;, &apos;都&apos;, &apos;要&apos;, &apos;听&apos;, &apos;至爱&apos;, &apos;Danny&apos;],</span><br><span class="line"> [&apos;对&apos;, &apos;呀&apos;, &apos;，&apos;, &apos;你&apos;, &apos;就&apos;, &apos;从来&apos;, &apos;没&apos;, &apos;喜欢&apos;, &apos;过&apos;, &apos;我&apos;, &apos;。&apos;, &apos;一点&apos;, &apos;都&apos;, &apos;煤油&apos;],</span><br><span class="line"> [&apos;沁入&apos;, &apos;心脾&apos;, &apos;的&apos;, &apos;温柔&apos;],</span><br><span class="line"> [&apos;最近&apos;, &apos;好&apos;, &apos;喜欢&apos;, &apos;这&apos;, &apos;首歌&apos;],</span><br><span class="line"> [&apos;今日&apos;, &apos;点歌&apos;, &apos;③&apos;, &apos;.&apos;],</span><br><span class="line"> [&apos;偏偏&apos;, &apos;对&apos;, &apos;你&apos;, &apos;没有&apos;, &apos;抵抗力&apos;],..</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-5-提取词典特征数"><a href="#6-5-提取词典特征数" class="headerlink" title="6.5 提取词典特征数"></a>6.5 提取词典特征数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dictionary = corpora.Dictionary(trains)</span><br><span class="line">feature_cnt = len(dictionary.token2id)</span><br></pre></td></tr></table></figure>
+<p>查看字典里面的词语：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tfidf_vec.vocabulary_)</span><br></pre></td></tr></table></figure></p>
+<p>可见有在《偏偏喜欢你》的评论文本里一个有13651个词语。<br>即词典特征数为13651，feature_cnt的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dictionary(13651 unique tokens: [&apos;人&apos;, &apos;故事&apos;, &apos;是&apos;, &apos;有&apos;, &apos;的&apos;]...)</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-6-构建语料库"><a href="#6-6-构建语料库" class="headerlink" title="6.6 构建语料库"></a>6.6 构建语料库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">corpus = [dictionary.doc2bow(text) for text in trains]</span><br><span class="line">corpus</span><br></pre></td></tr></table></figure>
+<p>我们得到的语料库形式为下，其中第一行评论[‘都’, ‘是’, ‘有’, ‘故事’, ‘的’, ‘人’]转化为了稀疏向量[(0, 1), (1, 1), (2, 1), (3, 1), (4, 1), (5, 1)]。当我们使用doc2bow函数时，每一个词语会对应一个id，如：‘都’对应0，’是’对应1，’有’对应2，’故事’对应3，’的’对应4，’人’对应5, 后面的1代表在本句评论中，‘都’出现了一次，‘是’一次，‘有’一次，‘故事一次’……<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[[(0, 1), (1, 1), (2, 1), (3, 1), (4, 1), (5, 1)],</span><br><span class="line"> [(5, 1), (6, 1), (7, 1), (8, 1), (9, 1), (10, 1)],</span><br><span class="line"> [(5, 1),</span><br><span class="line">  (11, 1),</span><br><span class="line">  (12, 1),</span><br><span class="line">  (13, 1),</span><br><span class="line">  (14, 1),</span><br><span class="line">  (15, 1),</span><br><span class="line">  (16, 1),</span><br><span class="line">  (17, 1),</span><br><span class="line">  (18, 1),</span><br><span class="line">  (19, 1),</span><br><span class="line">  (20, 1),</span><br><span class="line">  (21, 1),</span><br><span class="line">  (22, 1),</span><br><span class="line">  (23, 1)],</span><br><span class="line"> [(4, 1), (24, 1), (25, 1), (26, 1)],</span><br><span class="line"> [(16, 1), (27, 1), (28, 1), (29, 1), (30, 1)],...</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-7-使用TF-IDF模型处理语料库"><a href="#6-7-使用TF-IDF模型处理语料库" class="headerlink" title="6.7 使用TF-IDF模型处理语料库"></a>6.7 使用TF-IDF模型处理语料库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tfidf = models.TfidfModel(corpus)</span><br><span class="line">for i in tfidf[corpus]:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+<p>可以得到训练文本的TF-IDF值，以稀疏向量的形式保存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[(0, 0.32184672062922548), (1, 0.73766014971005966), (2, 0.29497170498614139), (3, 0.29304380441485145), (4, 0.13870813169109303), (5, 0.40018654163321249)]</span><br><span class="line">[(5, 0.19879141119607197), (6, 0.43291398548320181), (7, 0.1986860979407834), (8, 0.45262734719390507), (9, 0.68525962106956162), (10, 0.24318516977110011)]</span><br><span class="line">[(5, 0.16060211474573619), (11, 0.098574217529621325), (12, 0.36067639144364333), (13, 0.42534037149410231), (14, 0.063581328755947963), (15, 0.20711773583505186), (16, 0.074812488712874464), (17, 0.248665060688224), (18, 0.16081534912048612), (19, 0.077507465039391904), (20, 0.27324683263788124), (21, 0.59516351798480016), (22, 0.27437250176801881), (23, 0.055533166748108702)]</span><br><span class="line">[(4, 0.060614261626705232), (24, 0.64806776302591229), (25, 0.64806776302591229), (26, 0.39540139142475095)]</span><br><span class="line">[(16, 0.1603400740935198), (27, 0.3795919475458821), (28, 0.78372267212523294), (29, 0.31693482880130575), (30, 0.33990013458011531)]</span><br><span class="line">[(31, 0.22648623811135946), (32, 0.63332275807290517), (33, 0.50068929396716033), (34, 0.54490044866907528)]</span><br></pre></td></tr></table></figure>
+<h3 id="6-8-将测试集转换为稀疏向量"><a href="#6-8-将测试集转换为稀疏向量" class="headerlink" title="6.8 将测试集转换为稀疏向量"></a>6.8 将测试集转换为稀疏向量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kw_vector = dictionary.doc2bow(jieba.lcut(tests))</span><br><span class="line">print(tfidf[kw_vector])</span><br></pre></td></tr></table></figure>
+<p>可以得到测试文本的TF-IDF值，以稀疏向量的形式保存：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(14, 0.64759350572190955), (16, 0.76198599156861602)]</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-9-相似度计算"><a href="#6-9-相似度计算" class="headerlink" title="6.9 相似度计算"></a>6.9 相似度计算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">index = similarities.SparseMatrixSimilarity(tfidf[corpus], num_features=feature_cnt)</span><br><span class="line">similarity = index[tfidf[kw_vector]]</span><br><span class="line">for i in range(len(similarity)):</span><br><span class="line">    print(&apos;tests 与 trains%d 相似度为：%.2f&apos; % (i + 1, similarity[i]))</span><br></pre></td></tr></table></figure>
+<p>得到相似度为下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">tests 与 trains1 相似度为：0.00</span><br><span class="line">tests 与 trains2 相似度为：0.00</span><br><span class="line">tests 与 trains3 相似度为：0.10</span><br><span class="line">tests 与 trains4 相似度为：0.00</span><br><span class="line">tests 与 trains5 相似度为：0.12</span><br><span class="line">tests 与 trains6 相似度为：0.00</span><br><span class="line">tests 与 trains7 相似度为：0.06</span><br><span class="line">tests 与 trains8 相似度为：0.04</span><br><span class="line">tests 与 trains9 相似度为：0.09</span><br><span class="line">tests 与 trains10 相似度为：0.15</span><br><span class="line">tests 与 trains11 相似度为：0.00</span><br><span class="line">tests 与 trains12 相似度为：0.00</span><br><span class="line">tests 与 trains13 相似度为：0.00</span><br><span class="line">tests 与 trains14 相似度为：0.00</span><br><span class="line">tests 与 trains15 相似度为：0.00</span><br><span class="line">tests 与 trains16 相似度为：0.14</span><br><span class="line">tests 与 trains17 相似度为：0.00</span><br><span class="line">tests 与 trains18 相似度为：0.09</span><br><span class="line">tests 与 trains19 相似度为：0.00</span><br><span class="line">tests 与 trains20 相似度为：0.00</span><br></pre></td></tr></table></figure></p>
+<p>将相似度保存到文件“sim.csv”中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">similarity = list(sim)</span><br><span class="line">sim_file = open(&quot;sim.csv&quot;,&apos;w&apos;)</span><br><span class="line">for i in similarity:</span><br><span class="line">    sim_file.write(str(i)+&apos;\n&apos;)</span><br><span class="line">sim_file.close()</span><br><span class="line">print(similarity)</span><br></pre></td></tr></table></figure></p>
+<p>将相似度转化为数据框，并降序排列：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">similarity=pd.DataFrame(similarity)</span><br><span class="line">similarity.iloc[np.argsort(-similarity.iloc[:,0]),:]</span><br></pre></td></tr></table></figure></p>
+<p>得到相似度最高的前18个：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	0</span><br><span class="line">4536	1.000000</span><br><span class="line">1803	0.784898</span><br><span class="line">6485	0.784898</span><br><span class="line">6134	0.784898</span><br><span class="line">398	    0.784898</span><br><span class="line">1614	0.784898</span><br><span class="line">8376	0.784898</span><br><span class="line">3948	0.784898</span><br><span class="line">1362	0.761986</span><br><span class="line">9629	0.761986</span><br><span class="line">5481	0.761986</span><br><span class="line">324	    0.761986</span><br><span class="line">1632	0.761986</span><br><span class="line">6405	0.761986</span><br><span class="line">5091	0.761986</span><br><span class="line">986	    0.642364</span><br><span class="line">9395	0.617391</span><br><span class="line">3679	0.600096</span><br></pre></td></tr></table></figure></p>
+<p>查看相似度为1的评论：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[&apos;context&apos;].iloc[4536]</span><br></pre></td></tr></table></figure></p>
+<p>得到评论信息为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;喜欢你&apos;</span><br></pre></td></tr></table></figure></p>
+<p>同样，取得相似度为第2的评论信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;我喜欢你&apos;</span><br></pre></td></tr></table></figure></p>
+<p>因此，我们得到与用户ID为76654704最相似的用户ID为380345546。</p>
+<h2 id="七、相似用户推荐（Python之sklearn版本）"><a href="#七、相似用户推荐（Python之sklearn版本）" class="headerlink" title="七、相似用户推荐（Python之sklearn版本）"></a>七、相似用户推荐（Python之sklearn版本）</h2><h3 id="7-1-sklearn"><a href="#7-1-sklearn" class="headerlink" title="7.1 sklearn"></a>7.1 sklearn</h3><p><strong>Scikit-learn</strong> (formerly <strong>scikits.learn</strong>) is a <a href="https://en.wikipedia.org/wiki/Free_software" title="Free software" target="_blank" rel="noopener">free software</a> <a href="https://en.wikipedia.org/wiki/Machine_learning" title="Machine learning" target="_blank" rel="noopener">machine learning</a> <a href="https://en.wikipedia.org/wiki/Library_(computing" target="_blank" rel="noopener">library</a> “Library (computing)”) for the <a href="https://en.wikipedia.org/wiki/Python_(programming_language" target="_blank" rel="noopener">Python</a> “Python (programming language)”) programming language.It features various <a href="https://en.wikipedia.org/wiki/Statistical_classification" title="Statistical classification" target="_blank" rel="noopener">classification</a>, <a href="https://en.wikipedia.org/wiki/Regression_analysis" title="Regression analysis" target="_blank" rel="noopener">regression</a> and <a href="https://en.wikipedia.org/wiki/Cluster_analysis" title="Cluster analysis" target="_blank" rel="noopener">clustering</a> algorithms including <a href="https://en.wikipedia.org/wiki/Support_vector_machine" title="Support vector machine" target="_blank" rel="noopener">support vector machines</a>, <a href="https://en.wikipedia.org/wiki/Random_forests" title="Random forests" target="_blank" rel="noopener">random forests</a>, <a href="https://en.wikipedia.org/wiki/Gradient_boosting" title="Gradient boosting" target="_blank" rel="noopener">gradient boosting</a>, <a href="https://en.wikipedia.org/wiki/K-means_clustering" title="K-means clustering" target="_blank" rel="noopener"><em>k</em>-means</a> and <a href="https://en.wikipedia.org/wiki/DBSCAN" title="DBSCAN" target="_blank" rel="noopener">DBSCAN</a>, and is designed to interoperate with the Python numerical and scientific libraries <a href="https://en.wikipedia.org/wiki/NumPy" title="NumPy" target="_blank" rel="noopener">NumPy</a> and <a href="https://en.wikipedia.org/wiki/SciPy" title="SciPy" target="_blank" rel="noopener">SciPy</a>.</p>
+<h3 id="7-2-文本预处理"><a href="#7-2-文本预处理" class="headerlink" title="7.2 文本预处理"></a>7.2 文本预处理</h3><p>导入之前处理过好的数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.chdir(&apos;G:\\项目\\网易云音乐评论\\文本挖掘&apos;)  </span><br><span class="line">import pandas as pd</span><br><span class="line">data = pd.read_csv(r&quot;DealtedData.csv&quot;,encoding=&apos;gbk&apos;, sep=&apos;,&apos;,index_col=0,header=0)</span><br></pre></td></tr></table></figure></p>
+<p>分词：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">def chinese_word_cut(mytext):</span><br><span class="line">    return &quot; &quot;.join(jieba.cut(mytext))</span><br><span class="line">d=pd.DataFrame(data[&apos;context&apos;].astype(str))</span><br><span class="line">d[&quot;title_cutted&quot;] = d[&apos;context&apos;].apply(chinese_word_cut)</span><br><span class="line">d.title_cutted.head()</span><br></pre></td></tr></table></figure></p>
+<p>可得分析结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">328901978                        都 是 有 故事 的 人</span><br><span class="line">1724358802                  每天 都 要 听 至爱 Danny</span><br><span class="line">451250610     对 呀 ， 你 就 从来 没 喜欢 过 我 。 一点 都 煤油</span><br><span class="line">554348857                          沁入 心脾 的 温柔</span><br><span class="line">1296389446                       最近 好 喜欢 这 首歌</span><br><span class="line">Name: title_cutted, dtype: object</span><br></pre></td></tr></table></figure></p>
+<p>接下来我们对这些本文做向量化，所谓文本向量化，指的就是形成一个28197（文档个数）*n（文本中所有词的数量）的0-1矩阵，特定词在这个文档出现记为1，否则为0。若选取所有词的话，这必然是一个很大的矩阵，因此在之前的操作中，本文从所有的词中选取了1000关键词。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer</span><br><span class="line">vectorizer = CountVectorizer()</span><br><span class="line">count = vectorizer.fit_transform(d.title_cutted)</span><br><span class="line">print(vectorizer.get_feature_names())</span><br></pre></td></tr></table></figure></p>
+<p>查看所有文本的关键字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...&apos;不是&apos;, &apos;不是故意&apos;, &apos;不曾&apos;, &apos;不會&apos;, &apos;不會來&apos;, &apos;不服&apos;, &apos;不服输&apos;, &apos;不期而遇&apos;, &apos;不来&apos;, &apos;不染&apos;, &apos;不欠&apos;, &apos;不欢&apos;, &apos;不欢而散&apos;, &apos;不止&apos;, &apos;不正&apos;, &apos;不死&apos;, &apos;不死心&apos;, &apos;不求&apos;, &apos;不浮&apos;, &apos;不溜提&apos;, &apos;不满&apos;, &apos;不潮&apos;, &apos;不点&apos;, &apos;不烦&apos;, &apos;不然&apos;, &apos;不燥&apos;, &apos;不爱&apos;, &apos;不理&apos;, &apos;不甘&apos;, &apos;不甘示弱&apos;, &apos;不生&apos;, &apos;不用&apos;, &apos;不用谢&apos;, &apos;不由得&apos;, &apos;不由自主&apos;, &apos;不留&apos;, &apos;不疼&apos;, &apos;不痛&apos;, &apos;不相误&apos;, &apos;不看&apos;, &apos;不眠&apos;, &apos;不知&apos;, &apos;不知不觉&apos;, &apos;不知好歹&apos;, &apos;不知情&apos;, &apos;不知所措&apos;, &apos;不知所谓&apos;, &apos;不禁&apos;, &apos;不离&apos;, &apos;不算&apos;, &apos;不算什么&apos;, &apos;不管&apos;, &apos;不管怎样&apos;, &apos;不纯&apos;, &apos;不经意&apos;, &apos;不绕&apos;, &apos;不羁&apos;, &apos;不老&apos;, &apos;不耐烦&apos;, &apos;不肯&apos;, &apos;不胜枚举&apos;, &apos;不能&apos;, &apos;不能不&apos;, &apos;不能不要&apos;, &apos;不能治愈&apos;, &apos;不能自已&apos;, &apos;不能自拔&apos;, &apos;不腻&apos;, &apos;不至于&apos;, &apos;不舍&apos;, &apos;不苦&apos;, &apos;不蓝&apos;, &apos;不行&apos;, &apos;不衰&apos;, &apos;不要&apos;, &apos;不要脸&apos;, &apos;不见&apos;, &apos;不論&apos;, &apos;不计&apos;, &apos;不让&apos;, &apos;不记&apos;, &apos;不讲道理&apos;, &apos;不许&apos;, &apos;不论&apos;, &apos;不论什么&apos;, &apos;不识抬举&apos;, &apos;不识曲&apos;, &apos;不该&apos;, &apos;不说&apos;, &apos;不谢&apos;, &apos;不负&apos;, &apos;不败&apos;, &apos;不起&apos;, &apos;不足&apos;, &apos;不躁&apos;, &apos;不输给&apos;, &apos;不辞而别&apos;, &apos;不过&apos;, &apos;不远&apos;, &apos;不远千里&apos;, &apos;不适&apos;, &apos;不通&apos;, &apos;不配&apos;, &apos;不错&apos;, &apos;不长&apos;, &apos;不问&apos;, &apos;不间断&apos;, &apos;不需&apos;, &apos;不靠&apos;, &apos;不须&apos;, &apos;不顾&apos;, &apos;不高&apos;, &apos;与其&apos;, &apos;与其说是&apos;, &apos;与否&apos;, &apos;与子偕老&apos;, &apos;与我无关&apos;, &apos;与生俱来&apos;, &apos;丑小鸭&apos;, &apos;专一&apos;, &apos;专业&apos;, &apos;专业课&apos;, &apos;专场&apos;, &apos;专注&apos;, &apos;专用&apos;, &apos;专辑&apos;, &apos;专门&apos;, &apos;世上&apos;, &apos;世事&apos;, &apos;世人&apos;, &apos;世俗&apos;, &apos;世情&apos;, &apos;世無雙&apos;, &apos;世界&apos;, &apos;世界杯&apos;, &apos;世界观&apos;, &apos;世纪&apos;, &apos;世荣&apos;, &apos;世间&apos;, &apos;业生&apos;, &apos;东京&apos;, &apos;东北&apos;, &apos;东南亚&apos;, &apos;东方&apos;, &apos;东方人&apos;, &apos;东方文化&apos;, &apos;东流&apos;, &apos;东渡&apos;, &apos;东皇钟&apos;, &apos;东西&apos;, &apos;东邪西毒&apos;, &apos;东风破&apos;, &apos;丝滑&apos;, &apos;丢失&apos;, &apos;丢掉&apos;, &apos;丢脸&apos;, &apos;两三次&apos;, &apos;两个&apos;, &apos;两人&apos;, &apos;两人同&apos;, &apos;两件&apos;, &apos;两伙&apos;, &apos;两位&apos;, &apos;两位数&apos;, &apos;两分钟&apos;, &apos;两千块&apos;, &apos;两千多&apos;, &apos;两口&apos;, &apos;两句&apos;, &apos;两只&apos;, &apos;两周&apos;, &apos;两场&apos;, &apos;两块钱&apos;, &apos;两天&apos;, &apos;两岁半&apos;, &apos;两年&apos;, &apos;两情相悦&apos;, &apos;两月&apos;, &apos;两条&apos;, &apos;两栋&apos;, &apos;两次&apos;, &apos;两段&apos;, &apos;两点&apos;, &apos;两百天&apos;, &apos;两百斤&apos;, &apos;两盒&apos;, &apos;两码事&apos;, &apos;两种&apos;, &apos;两秒&apos;, &apos;两级&apos;, &apos;两行&apos;, &apos;两遍&apos;, &apos;两集&apos;, &apos;两面&apos;, &apos;两首&apos;, &apos;两首歌&apos;, &apos;严厉&apos;, &apos;严肃&apos;, &apos;严谨&apos;, &apos;严重&apos;, &apos;丧失&apos;, &apos;个个&apos;, &apos;个人&apos;, &apos;个人感觉&apos;, &apos;个人观点&apos;, &apos;个别&apos;, &apos;个头&apos;, &apos;个子&apos;, &apos;个币&apos;, &apos;个性&apos;, &apos;个赞&apos;, &apos;丫头&apos;, &apos;丫点&apos;, &apos;中会&apos;, &apos;中医&apos;, &apos;中午&apos;, &apos;中华&apos;, &apos;中华文化&apos;, &apos;中华民谣&apos;, &apos;中国&apos;, &apos;中国香港&apos;, &apos;中央&apos;, &apos;中央空调&apos;, &apos;中学&apos;, &apos;中学毕业&apos;, &apos;中层&apos;, &apos;中山&apos;, &apos;中岛美雪&apos;, &apos;中带&apos;, &apos;中广核&apos;, &apos;中庙&apos;, &apos;中式&apos;, &apos;中心&apos;, &apos;中意&apos;, &apos;中文&apos;, &apos;中文系&apos;, &apos;中曲&apos;, &apos;中有&apos;, &apos;中泪点&apos;, &apos;中环&apos;, &apos;中秋&apos;, &apos;中秋节&apos;, &apos;中老年人&apos;, &apos;中考&apos;, &apos;中过&apos;, &apos;中途&apos;, &apos;中间&apos;, &apos;中高音&apos;, &apos;丰城&apos;, &apos;临窗&apos;, &apos;临近&apos;, &apos;丹丹&apos;, &apos;丹妮&apos;, &apos;丹尼&apos;, &apos;为了&apos;, &apos;为什么&apos;, &apos;为何&apos;, &apos;为先&apos;, &apos;为君&apos;, &apos;为啥&apos;, &apos;为国争光&apos;, &apos;为数不多&apos;, &apos;为止&apos;, &apos;为此&apos;, &apos;为活&apos;, &apos;为琦琦&apos;, &apos;为罗琦琦&apos;, &apos;为萝莉&apos;, &apos;为难&apos;, &apos;主任&apos;, &apos;主动&apos;, &apos;主叫&apos;, &apos;主唱&apos;, &apos;主持人&apos;, &apos;主时&apos;, &apos;主流&apos;...]</span><br></pre></td></tr></table></figure></p>
+<p>查看所有文本的关键字和其位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(vectorizer.vocabulary_)</span><br><span class="line">&#123;...&apos;故事&apos;: 6694, &apos;每天&apos;: 7759, &apos;至爱&apos;: 10103, &apos;danny&apos;: 252, &apos;从来&apos;: 1885, &apos;喜欢&apos;: 3777, &apos;一点&apos;: 803, &apos;煤油&apos;: 8436, &apos;沁入&apos;: 7880, &apos;心脾&apos;: 5636, &apos;温柔&apos;: 8233, &apos;最近&apos;: 7194, &apos;首歌&apos;: 11920, &apos;今日&apos;: 1863, &apos;点歌&apos;: 8383, &apos;偏偏&apos;: 2226, &apos;没有&apos;: 7941, &apos;抵抗力&apos;: 6369, &apos;一次&apos;: 787, &apos;我们&apos;: 6052, &apos;擦肩而过&apos;: 6630, &apos;害怕&apos;: 4776, &apos;电影&apos;: 8799, &apos;情景&apos;: 5858, &apos;一样&apos;: 779, &apos;错过&apos;: 11479, &apos;所以&apos;: 6182, &apos;一直&apos;: 826, &apos;看着&apos;: 9095, &apos;可是&apos;: 3350, &apos;回头&apos;: 3848, &apos;一眼&apos;: 828, &apos;珍贵&apos;: 8683, &apos;奈何&apos;: 4376, &apos;珍惜&apos;: 8680, &apos;王雷雷&apos;: 8642, &apos;这是&apos;: 11085, &apos;为什么&apos;: 1453, &apos;浪漫&apos;: 8115, &apos;小时候&apos;: 4912, &apos;有个&apos;: 7208, &apos;收音机&apos;: 6650, &apos;好开心&apos;: 4462, &apos;睡觉&apos;: 9183, &apos;舍不得&apos;: 10111, &apos;放下&apos;: 6662, &apos;好听&apos;: 4444, &apos;这些&apos;: 11063, &apos;歌曲&apos;: 7650, &apos;经典作品&apos;: 9647, &apos;亲亲&apos;: 1735, &apos;翩翩&apos;: 9789, &apos;夫人&apos;: 4345, &apos;爱情&apos;: 8485, &apos;时光&apos;: 6969, &apos;纪贯&apos;: 9594, &apos;一家&apos;: 716, &apos;吃饭&apos;: 3397, &apos;店里&apos;: 5259, &apos;知道&apos;: 9202, &apos;什么&apos;: 1842, &apos;一下&apos;: 607, &apos;爱心&apos;: 8482, &apos;幸福&apos;: 5221, &apos;nan&apos;: 444, &apos;超级&apos;: 10823, &apos;一首歌&apos;: 907, &apos;大赞&apos;: 4234, &apos;可能&apos;: 3361, &apos;单手&apos;: 3036, &apos;法拉利&apos;: 7987, &apos;多多&apos;: 4104, &apos;大笑&apos;: 4222, &apos;活下去&apos;: 8045, &apos;再见&apos;: 2488, &apos;大渣&apos;: 4213,...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>查看词频矩阵的结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[[0 0 0 ..., 0 0 0]</span><br><span class="line"> [0 0 0 ..., 0 0 0]</span><br><span class="line"> [0 0 0 ..., 0 0 0]</span><br><span class="line"> ..., </span><br><span class="line"> [0 0 0 ..., 0 0 0]</span><br><span class="line"> [0 0 0 ..., 0 0 0]</span><br><span class="line"> [0 0 0 ..., 0 0 0]]</span><br></pre></td></tr></table></figure></p>
+<p>0充斥了整个矩阵，查看其维度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">count.shape</span><br><span class="line">(20523, 12111)</span><br></pre></td></tr></table></figure></p>
+<p>20523行，12111列，指的是有20523个文档，即用户评论，语料库里一共有12111个词。查看其数据类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type(count)</span><br><span class="line">scipy.sparse.csr.csr_matrix</span><br></pre></td></tr></table></figure></p>
+<p>妥妥的稀疏矩阵。</p>
+<h3 id="7-3-计算tf-idf值："><a href="#7-3-计算tf-idf值：" class="headerlink" title="7.3 计算tf-idf值："></a>7.3 计算tf-idf值：</h3><p>利用TfidfTransformer函数统计CountVectorizer中每个词语的tf-idf权值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tfidf_vec = TfidfVectorizer() </span><br><span class="line">tfidf_matrix = tfidf_vec.fit_transform(d.title_cutted)</span><br><span class="line">print(tfidf_matrix.toarray())</span><br></pre></td></tr></table></figure></p>
+<p>得到tf-idf数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[[ 0.  0.  0. ...,  0.  0.  0.]</span><br><span class="line"> [ 0.  0.  0. ...,  0.  0.  0.]</span><br><span class="line"> [ 0.  0.  0. ...,  0.  0.  0.]</span><br><span class="line"> ..., </span><br><span class="line"> [ 0.  0.  0. ...,  0.  0.  0.]</span><br><span class="line"> [ 0.  0.  0. ...,  0.  0.  0.]</span><br><span class="line"> [ 0.  0.  0. ...,  0.  0.  0.]]</span><br></pre></td></tr></table></figure></p>
+<p>剩余步骤类似于上，找对应函数，得到用户相似度。</p>
+<h2 id="八、相似用户推荐-R语言版本"><a href="#八、相似用户推荐-R语言版本" class="headerlink" title="八、相似用户推荐(R语言版本)"></a>八、相似用户推荐(R语言版本)</h2><h3 id="8-1-读取资料库"><a href="#8-1-读取资料库" class="headerlink" title="8.1 读取资料库"></a>8.1 读取资料库</h3><p>设置工作目录，导入函数包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">setwd(&quot;G:\\课程\\研一\\回归分析&quot;)</span><br><span class="line">library(xml2,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(Rcpp,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(slam,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(NLP,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(tm,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#只有RJava配置成功了，Rwordseg安装才可能成功，前者是后者的依赖包</span><br><span class="line">#install.packages(&quot;rJava&quot;,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(rJava,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#手动下载安装包Rwordseg，然后本地安装</span><br><span class="line">library(Rwordseg,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>导入数据，其中，clipboard指的是HuXiu.txt用notepad打开后复制，防止中文乱码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">csv &lt;- read.table(&quot;clipboard&quot;,header=T, stringsAsFactors=F,quote = &quot;&quot;,encoding=&quot;utf-8&quot;)</span><br><span class="line">mystopwords&lt;-unlist(read.table(&quot;StopWords.txt&quot;,stringsAsFactors=F,quote = &quot;&quot;))</span><br><span class="line">head(csv)</span><br><span class="line">dim(csv)</span><br><span class="line">colnames(csv)&lt;-c(&quot;text&quot;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-2-定义数据预处理函数"><a href="#8-2-定义数据预处理函数" class="headerlink" title="8.2 定义数据预处理函数"></a>8.2 定义数据预处理函数</h3><ul>
+<li><p>移除数字函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">removeNumbers = function(x) &#123; ret = gsub(&quot;[0-9０１２３４５６７８９]&quot;,&quot;&quot;,x) &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>segmentCN分词函数<br>中文分词，也可以考虑使用 rmmseg4j、rsmartcn </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wordsegment&lt;- function(x) &#123; </span><br><span class="line">  library(Rwordseg) </span><br><span class="line">  segmentCN(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去除停止词函数 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">removeStopWords = function(x,words) &#123;     </span><br><span class="line">  ret = character(0) </span><br><span class="line">  index &lt;- 1 </span><br><span class="line">  it_max &lt;- length(x) </span><br><span class="line">  while (index &lt;= it_max) &#123; </span><br><span class="line">    if (length(words[words==x[index]]) &lt;1) ret &lt;- c(ret,x[index]) </span><br><span class="line">    index &lt;- index +1 </span><br><span class="line">  &#125; </span><br><span class="line">  ret </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="8-3移除数字"><a href="#8-3移除数字" class="headerlink" title="8.3移除数字"></a>8.3移除数字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sample.words &lt;- lapply(data[,1], removeNumbers) </span><br><span class="line">dim(as.matrix(sample.words))</span><br><span class="line">head(sample.words)</span><br></pre></td></tr></table></figure>
+<h3 id="8-4-中文分词"><a href="#8-4-中文分词" class="headerlink" title="8.4 中文分词"></a>8.4 中文分词</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sample.words &lt;- lapply(sample.words, wordsegment) </span><br><span class="line">dim(as.matrix(sample.words))</span><br><span class="line">sample.words[1:6]</span><br></pre></td></tr></table></figure>
+<h3 id="8-5-移除停止词"><a href="#8-5-移除停止词" class="headerlink" title="8.5 移除停止词"></a>8.5 移除停止词</h3><p>先处理中文分词，再处理 stopwords，防止全局替换丢失信息,<br>(下面这句运行时间较长 )<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sample.words &lt;- lapply(sample.words, removeStopWords, mystopwords) </span><br><span class="line">head(sample.words)</span><br><span class="line">text&lt;-sample.words[,1]</span><br><span class="line">colnames(sample.words)&lt;-c(&quot;text&quot;)</span><br><span class="line">write.csv(as.matrix(sample.words),&quot;delateddata.csv&quot;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-6-构建语料库"><a href="#8-6-构建语料库" class="headerlink" title="8.6 构建语料库"></a>8.6 构建语料库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">corpus = Corpus(VectorSource(sample.words)) </span><br><span class="line">meta(corpus,&quot;cluster&quot;) &lt;- csv$type </span><br><span class="line">unique_type &lt;- unique(csv$type) </span><br><span class="line">corpus</span><br></pre></td></tr></table></figure>
+<h3 id="8-7建立文档-词条矩阵"><a href="#8-7建立文档-词条矩阵" class="headerlink" title="8.7建立文档-词条矩阵"></a>8.7建立文档-词条矩阵</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(sample.dtm &lt;- DocumentTermMatrix(corpus, control = list(wordLengths = c(2, Inf))))</span><br></pre></td></tr></table></figure>
+<p>接下来，就是计算tf-idf值，相似度，得到相似用户，完成用户推荐。</p>
+<h3 id="九-网易云音乐年度总结"><a href="#九-网易云音乐年度总结" class="headerlink" title="九 网易云音乐年度总结"></a>九 网易云音乐年度总结</h3><h3 id="9-1-说明"><a href="#9-1-说明" class="headerlink" title="9.1 说明"></a>9.1 说明</h3><p>灵感：新浪热搜<a href="https://s.weibo.com/weibo/%23%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%23" target="_blank" rel="noopener">#网易云音乐年度总结#</a>，有这样的总结报告：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13155641-454144727b43db0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/13155641-0df091d891856dde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/13155641-d64660c935fff028.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这份报告前些几日刷爆了我的朋友圈，我想的是，既然大家这么喜爱，那我就做一个呗。只要有数据，一切可行！</p>
+<p>但是，有绝大部分数据网易云官方并没有提供给用户本人，而是存放到网易云官方数据库里。还有一部分只有用户本人可以看到，属于隐私信息。文本对无限制权限的选项做一些统计分析，权限列举如下：</p>
+<ul>
+<li>某首歌听了多少次（用户本人）</li>
+<li>某一天听某首歌特别多次（网易云官方）</li>
+<li>2018年年度歌手（网易云官方）</li>
+<li>每首歌多少次显示出来（网易云官方）</li>
+<li>播放前100歌曲（无限制）</li>
+<li>2018年你在网易云听到的最多的歌词（无限制）</li>
+<li>晚上12点6点之前以后仍在听歌的记录（网易云官方）</li>
+<li>听歌天数最多的歌曲（网易云官方）</li>
+<li>曾经喜欢现在冷落的歌（网易云官方）</li>
+<li>听了多少首歌（无限制）</li>
+<li>花了多少时间（网易云官方）</li>
+</ul>
+<p>最后要做的也只能做的是图9.2：<br>一个用户播放记录里面歌词出现次数最多的词语<br>以及这个词语分别出现在哪首歌的哪句歌词中</p>
+<p>注：后台时间记录是使用了13位时间戳，需要转化。13位的时间戳的默认精度是毫秒，10位时间戳的精度是秒。 由于时间、精力关系，9.2、9.3暂且放在这里，留着以后做或者删掉。</p>
+<h3 id="9-2-播放记录出现次数最多的词语"><a href="#9-2-播放记录出现次数最多的词语" class="headerlink" title="9.2 播放记录出现次数最多的词语"></a>9.2 播放记录出现次数最多的词语</h3><h3 id="9-3-词语所对应的歌曲歌词"><a href="#9-3-词语所对应的歌曲歌词" class="headerlink" title="9.3 词语所对应的歌曲歌词"></a>9.3 词语所对应的歌曲歌词</h3><h2 id="十、感想"><a href="#十、感想" class="headerlink" title="十、感想"></a>十、感想</h2><p>码代码时，有一个很重要的点就是，你需要有推倒重来的勇气。当前面你已经做了很多工作时，你发现有的方法不太适用、有些繁杂、有更好的、简洁的、可以替代的、功能更全的solutions时，要想到：upgrade，才能不断跨越。</p>
+<p>我很喜欢新鲜感，喜欢尝试一些有趣好玩的东西。潇潇洒洒一万五千余字，这篇文章花了我不少心血，1024根头发，暂停更。</p>
+<blockquote>
+<p>Written By LXP</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/23/hello-world/" rel="next" title="基于虎嗅网的文本挖掘">
+                <i class="fa fa-chevron-left"></i> 基于虎嗅网的文本挖掘
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">lxp</p>
+              <p class="site-description motion-element" itemprop="description">喜欢新鲜事物</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、目标网站介绍"><span class="nav-number">1.</span> <span class="nav-text">一、目标网站介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、所需工具"><span class="nav-number">2.</span> <span class="nav-text">二、所需工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、数据爬取"><span class="nav-number">3.</span> <span class="nav-text">三、数据爬取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-环境搭建"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 环境搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-网站分析"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 网站分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-功能特性"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 功能特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-歌单"><span class="nav-number">3.4.</span> <span class="nav-text">3.3 歌单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-歌曲"><span class="nav-number">3.5.</span> <span class="nav-text">3.3 歌曲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-歌曲评论"><span class="nav-number">3.6.</span> <span class="nav-text">3.5 歌曲评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-网易云音乐用户"><span class="nav-number">3.7.</span> <span class="nav-text">3.6 网易云音乐用户</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、数据分析"><span class="nav-number">4.</span> <span class="nav-text">四、数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-歌单"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 歌单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-播放数量最多的TOP20歌单"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 播放数量最多的TOP20歌单</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-网易云用户"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 网易云用户</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-数据库简单查询分析"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 数据库简单查询分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-关注者的地区分布"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 关注者的地区分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、文本相似计算原理"><span class="nav-number">5.</span> <span class="nav-text">五、文本相似计算原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-TF-IDF"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 TF-IDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Doc2Bow模型"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Doc2Bow模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-计算相似度"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 计算相似度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、相似用户推荐（Python之Gensim版本）"><span class="nav-number">6.</span> <span class="nav-text">六、相似用户推荐（Python之Gensim版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Gensim"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Gensim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-数据预处理"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 数据预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-文本预处理"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 文本预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-对训练集进行分词"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 对训练集进行分词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-提取词典特征数"><span class="nav-number">6.5.</span> <span class="nav-text">6.5 提取词典特征数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-6-构建语料库"><span class="nav-number">6.6.</span> <span class="nav-text">6.6 构建语料库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-7-使用TF-IDF模型处理语料库"><span class="nav-number">6.7.</span> <span class="nav-text">6.7 使用TF-IDF模型处理语料库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-8-将测试集转换为稀疏向量"><span class="nav-number">6.8.</span> <span class="nav-text">6.8 将测试集转换为稀疏向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-9-相似度计算"><span class="nav-number">6.9.</span> <span class="nav-text">6.9 相似度计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、相似用户推荐（Python之sklearn版本）"><span class="nav-number">7.</span> <span class="nav-text">七、相似用户推荐（Python之sklearn版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-sklearn"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 sklearn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-文本预处理"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 文本预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-计算tf-idf值："><span class="nav-number">7.3.</span> <span class="nav-text">7.3 计算tf-idf值：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、相似用户推荐-R语言版本"><span class="nav-number">8.</span> <span class="nav-text">八、相似用户推荐(R语言版本)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-读取资料库"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 读取资料库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-定义数据预处理函数"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 定义数据预处理函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3移除数字"><span class="nav-number">8.3.</span> <span class="nav-text">8.3移除数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-中文分词"><span class="nav-number">8.4.</span> <span class="nav-text">8.4 中文分词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-移除停止词"><span class="nav-number">8.5.</span> <span class="nav-text">8.5 移除停止词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-6-构建语料库"><span class="nav-number">8.6.</span> <span class="nav-text">8.6 构建语料库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-7建立文档-词条矩阵"><span class="nav-number">8.7.</span> <span class="nav-text">8.7建立文档-词条矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九-网易云音乐年度总结"><span class="nav-number">8.8.</span> <span class="nav-text">九 网易云音乐年度总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-说明"><span class="nav-number">8.9.</span> <span class="nav-text">9.1 说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-播放记录出现次数最多的词语"><span class="nav-number">8.10.</span> <span class="nav-text">9.2 播放记录出现次数最多的词语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-词语所对应的歌曲歌词"><span class="nav-number">8.11.</span> <span class="nav-text">9.3 词语所对应的歌曲歌词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、感想"><span class="nav-number">9.</span> <span class="nav-text">十、感想</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lxp</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

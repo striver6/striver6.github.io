@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、分析背景1、1 网站选取关于虎嗅，虽然是小众的互联网媒体，没有像擅长于用户推荐的今日头条、专注于时政的澎湃新闻那样广为人知。但其有内涵、有质量，能看到最新的消息与某些观点的深入分析，包括微信公众号，大部分会订阅虎嗅的公众号。 再者，文本重点在于展现和学习文本挖掘的思路和整体框架。至于其载体是虎嗅还是澎湃，显得或许没有那么重要了。 1.2 分析目的1、熟悉熟悉分析流程，尝试和学习一些有意思的东西">
+<meta name="keywords" content="love">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于虎嗅网的文本挖掘">
+<meta property="og:url" content="http://yoursite.com/2019/01/23/hello-world/index.html">
+<meta property="og:site_name" content="伪文艺Boy">
+<meta property="og:description" content="一、分析背景1、1 网站选取关于虎嗅，虽然是小众的互联网媒体，没有像擅长于用户推荐的今日头条、专注于时政的澎湃新闻那样广为人知。但其有内涵、有质量，能看到最新的消息与某些观点的深入分析，包括微信公众号，大部分会订阅虎嗅的公众号。 再者，文本重点在于展现和学习文本挖掘的思路和整体框架。至于其载体是虎嗅还是澎湃，显得或许没有那么重要了。 1.2 分析目的1、熟悉熟悉分析流程，尝试和学习一些有意思的东西">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-2a7b32c4da4e4141.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-93e3b25e35b48ce8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-40a59b448005a140.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-4995003a9317d158.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-ad47745debd914d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-0675b53ddc98158c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-3c79f8de5c2ccc59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-2625721c1ea0331b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-381ede2c481c64b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-aeb8dfc834128d12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-13b57236a8162e51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-b75eb423aa361d98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-eb4444c85b8d8587.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-d6b92803e65194ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-ce4e45aeea486142.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-f684f9188d5656f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-9e1d13dbeabde0df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-0e54a679a0bfbbe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-e1acd82f02d26fce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-b8106a3fa87a7bc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-09ca1e2575bb9629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-922e9b410a510a2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-94a10dca38df955c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-569b53e696932361.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-8fe821690dc255c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-66c5b2a213ea31eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13155641-29d457b58cac6999.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-23T14:41:26.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于虎嗅网的文本挖掘">
+<meta name="twitter:description" content="一、分析背景1、1 网站选取关于虎嗅，虽然是小众的互联网媒体，没有像擅长于用户推荐的今日头条、专注于时政的澎湃新闻那样广为人知。但其有内涵、有质量，能看到最新的消息与某些观点的深入分析，包括微信公众号，大部分会订阅虎嗅的公众号。 再者，文本重点在于展现和学习文本挖掘的思路和整体框架。至于其载体是虎嗅还是澎湃，显得或许没有那么重要了。 1.2 分析目的1、熟悉熟悉分析流程，尝试和学习一些有意思的东西">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/13155641-2a7b32c4da4e4141.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/23/hello-world/">
+
+
+
+
+
+  <title>基于虎嗅网的文本挖掘 | 伪文艺Boy</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">伪文艺Boy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Spark</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首&emsp;&emsp;页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归&emsp;&emsp;档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/hello-world/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lxp">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="伪文艺Boy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于虎嗅网的文本挖掘</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T21:23:40+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、分析背景"><a href="#一、分析背景" class="headerlink" title="一、分析背景"></a>一、分析背景</h2><h3 id="1、1-网站选取"><a href="#1、1-网站选取" class="headerlink" title="1、1 网站选取"></a>1、1 网站选取</h3><p>关于虎嗅，虽然是小众的互联网媒体，没有像擅长于用户推荐的今日头条、专注于时政的澎湃新闻那样广为人知。但其有内涵、有质量，能看到最新的消息与某些观点的深入分析，包括微信公众号，大部分会订阅虎嗅的公众号。</p>
+<p>再者，文本重点在于展现和学习文本挖掘的思路和整体框架。至于其载体是虎嗅还是澎湃，显得或许没有那么重要了。</p>
+<h3 id="1-2-分析目的"><a href="#1-2-分析目的" class="headerlink" title="1.2 分析目的"></a>1.2 分析目的</h3><p>1、熟悉熟悉分析流程，尝试和学习一些有意思的东西；<br>2、展现数据之美，体现数据的奥妙和给人带来的强烈的视觉冲击；<br>3、基于文本挖掘，分析虎嗅网这家网站的运营方向，专注领域，不同文章的书写手法，受欢迎文章所具备的特点等。</p>
+<a id="more"></a>
+<h3 id="1-3-使用到的数据分析工具"><a href="#1-3-使用到的数据分析工具" class="headerlink" title="1.3 使用到的数据分析工具"></a>1.3 使用到的数据分析工具</h3><ul>
+<li>Python 3.5.0</li>
+<li>PyCharm 2018.3</li>
+<li>Pyspider 0.3.10</li>
+<li>MongoDB 4.0.4</li>
+<li>Studio-3T </li>
+<li>jieba</li>
+<li>WordCloud</li>
+<li>R 3.5.1</li>
+<li>RStudio 3.5.1</li>
+<li>Jupyter 4.4.0<h2 id="二、前期准备"><a href="#二、前期准备" class="headerlink" title="二、前期准备"></a>二、前期准备</h2><h3 id="2-1-Pyspider"><a href="#2-1-Pyspider" class="headerlink" title="2.1 Pyspider"></a>2.1 Pyspider</h3><h4 id="2-1-1Pyspider简介"><a href="#2-1-1Pyspider简介" class="headerlink" title="2.1.1Pyspider简介"></a>2.1.1Pyspider简介</h4>Pyspider是一个非常高效、简单的框架，而且提供了一个WebUI界面。你可以在WebUI界面里编写你的爬虫代码，管理爬虫状态，查看当前调用的任务。</li>
+<li>Pyspider内置了PyQuery解析，可以使用任何你喜欢的html解析包；</li>
+<li>数据库支持MongoDB、MySQl、Redis、SQLite等；</li>
+<li>支持抓取经过JavaScript渲染的页面</li>
+<li>多进程处理<h3 id="2-1-2-Pyspider安装及配置"><a href="#2-1-2-Pyspider安装及配置" class="headerlink" title="2.1.2 Pyspider安装及配置"></a>2.1.2 Pyspider安装及配置</h3>节省篇幅，话不多说，链接附上：[Pyspider安装及配置]<a href="https://blog.csdn.net/qq_42336565/article/details/80697482" target="_blank" rel="noopener">https://blog.csdn.net/qq_42336565/article/details/80697482</a><h3 id="2-2-MongoDB"><a href="#2-2-MongoDB" class="headerlink" title="2.2 MongoDB"></a>2.2 MongoDB</h3><h4 id="2-2-1-MongoDB简介"><a href="#2-2-1-MongoDB简介" class="headerlink" title="2.2.1 MongoDB简介"></a>2.2.1 MongoDB简介</h4>MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。</li>
+</ul>
+<p>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
+<h4 id="2-2-2-MongoDB安装及配置"><a href="#2-2-2-MongoDB安装及配置" class="headerlink" title="2.2.2 MongoDB安装及配置"></a>2.2.2 MongoDB安装及配置</h4><p>按照下面的教程来安装：<br><a href="https://jingyan.baidu.com/article/a3f121e493e592fc9052bbfe.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/a3f121e493e592fc9052bbfe.html</a> 需要强调的一点是：第10步：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-2a7b32c4da4e4141.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MongoDB安装.png"></p>
+<p>这一步你要是很任性地像安装其他软件一样，选择了自定义的安装路径，或者在这一步:<br><img src="https://upload-images.jianshu.io/upload_images/13155641-93e3b25e35b48ce8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MongoDB安装.png"></p>
+<p>左下角，你勾上了Install MongoDB Compass，那你有可能就玩完了。。。接下来安装进程：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-40a59b448005a140.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MongoDB安装.png"></p>
+<p>进度条可能会卡在70%左右，一直不变，这个问题折磨了好久，老泪纵横，最后还是乖乖地默认安装路径。MongoDB还真是傲娇得很呐！</p>
+<h2 id="三、数据获取及预处理"><a href="#三、数据获取及预处理" class="headerlink" title="三、数据获取及预处理"></a>三、数据获取及预处理</h2><h3 id="3-1数据爬取"><a href="#3-1数据爬取" class="headerlink" title="3.1数据爬取"></a>3.1数据爬取</h3><p>鉴于虎嗅网主页是主编精挑细选出来的，很据代表性，能反映虎嗅网的整体状况，本文使用 Pyspider 抓取了来自[虎嗅网] <a href="https://www.huxiu.com/的主页文章。" target="_blank" rel="noopener">https://www.huxiu.com/的主页文章。</a></p>
+<h3 id="3-1-1-使用PyCharm"><a href="#3-1-1-使用PyCharm" class="headerlink" title="3.1.1 使用PyCharm"></a>3.1.1 使用PyCharm</h3><p>照常，我们用PyCharm来做，检查虎嗅原网页：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-4995003a9317d158.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HuXiu.png"></p>
+<blockquote>
+<p>设置服务器代理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def get_one_page(my_headers,url):</span><br><span class="line">    randdom_header = random.choice(my_headers)</span><br><span class="line">    req = urllib.request.Request(url)</span><br><span class="line">    req.add_header(&quot;User-Agent&quot;, randdom_header)</span><br><span class="line">    req.add_header(&quot;GET&quot;, url)</span><br><span class="line">    response = urllib.request.urlopen(req)</span><br><span class="line">    return  response</span><br><span class="line">#代理服务器</span><br><span class="line">my_headers = [</span><br><span class="line">        &quot;Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36&quot;,</span><br><span class="line">        &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36&quot;,</span><br><span class="line">        &quot;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0&quot;,</span><br><span class="line">        &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/537.75.14&quot;,</span><br><span class="line">        &quot;Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0)&quot;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>获取原网页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def get_href(html):</span><br><span class="line">    pattern = re.compile(&apos;&lt;div class=&quot;mod-b mod-art clearfix &quot;&apos;</span><br><span class="line">                         &apos;.*?&quot;transition&quot;  href=&quot;(.*?)&quot;&apos;</span><br><span class="line">                         &apos;.*?&lt;/div&gt;&apos;, re.S)</span><br><span class="line">    items =re.findall(pattern, html)</span><br><span class="line">    return items</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>使用正则表达式，解析原网页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def parse_one_page(href):</span><br><span class="line">    pattern = re.compile(&apos;&lt;div class=&quot;article-wrap&quot;&gt;&apos;</span><br><span class="line">                         &apos;.*?class=&quot;t-h1&quot;&gt;(.*?)&lt;/h1&gt;&apos;</span><br><span class="line">                         &apos;.*?article-time pull-left&quot;&gt;(.*?)&lt;/span&gt;&apos;</span><br><span class="line">                         &apos;.*?article-share pull-left&quot;&gt;(.*?)&lt;/span&gt;&apos;</span><br><span class="line">                         &apos;.*?article-pl pull-left&quot;&gt;(.*?)&lt;/span&gt;&apos;</span><br><span class="line">                       #  &apos;.*?text-remarks.*?&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;(.*?)&lt;!--.*?认证--&gt;&apos;</span><br><span class="line">                         &apos;.*?author-name.*?&lt;a href=&quot;.*?&quot; target=&quot;_blank&quot;&gt;(.*?)&lt;/a&gt;&apos;</span><br><span class="line">                         &apos;.*?author-one&quot;&gt;(.*?)&lt;/div&gt;&apos;</span><br><span class="line">                         &apos;.*?author-article-pl.*?target=&quot;_blank&quot;&gt;(.*?)&lt;/a&gt;&lt;/li&gt;&apos;</span><br><span class="line">                         &apos;.*?&lt;/div&gt;&apos;, re.S)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>将获得的参数值转化成键值对<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">items =re.findall(pattern, href)</span><br><span class="line">  for item in items:</span><br><span class="line">      yield &#123;</span><br><span class="line">          &apos;title&apos;: item[0].strip(),</span><br><span class="line">          &apos;time&apos;: item[1],</span><br><span class="line">          &apos;share&apos;: item[2][2:],</span><br><span class="line">          &apos;recoment&apos;: item[3][2:],</span><br><span class="line">       #   &apos;content&apos;: re.compile(r&apos;&lt;[^&gt;]+&gt;&apos;,re.S).sub(&apos;&apos;,item[4]).strip(),</span><br><span class="line">          &apos;anthor&apos;: item[4].strip(),</span><br><span class="line">          &apos;intro&apos;: item[5],</span><br><span class="line">          &apos;passNum&apos;: item[6]</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>循环遍历，抓取第一页所有文章<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for i in range(len(url_html)):</span><br><span class="line">        url_ord = &quot;https://www.huxiu.com&quot; + url_html[i]</span><br><span class="line">        ord_text = get_one_page(my_headers, url_ord).read().decode(&apos;utf-8&apos;)</span><br><span class="line">        for item in parse_one_page(ord_text):</span><br><span class="line">            print(item)</span><br><span class="line">            write_to_file(item)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>保存到文件text.txt中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def write_to_file(content):</span><br><span class="line">    with open(&apos;text.txt&apos;,&apos;a&apos;,encoding=&apos;utf-8&apos;) as f:</span><br><span class="line">        f.write(json.dumps(content, ensure_ascii=False)+&apos;\n&apos;)</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>爬取结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;title&quot;: &quot;裁员凶猛&quot;, &quot;time&quot;: &quot;2018-12-10 20:35&quot;, &quot;share&quot;: &quot;3&quot;, &quot;recoment&quot;: &quot;2&quot;, &quot;anthor&quot;: &quot;华夏时报©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;54篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;新东方烹饪学校都要上市了，你竟然还看不起职校&quot;, &quot;time&quot;: &quot;2018-12-10 20:31&quot;, &quot;share&quot;: &quot;3&quot;, &quot;recoment&quot;: &quot;0&quot;, &quot;anthor&quot;: &quot;敲敲格&quot;, &quot;intro&quot;: &quot;空山无人&quot;, &quot;passNum&quot;: &quot;150篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;互联网太可怕，我还是做回煤老板吧&quot;, &quot;time&quot;: &quot;2018-12-10 20:22&quot;, &quot;share&quot;: &quot;6&quot;, &quot;recoment&quot;: &quot;2&quot;, &quot;anthor&quot;: &quot;故事FM©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;16篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;《海王》，大型“海底捞”现场&quot;, &quot;time&quot;: &quot;2018-12-10 20:01&quot;, &quot;share&quot;: &quot;3&quot;, &quot;recoment&quot;: &quot;2&quot;, &quot;anthor&quot;: &quot;mrpuppybunny&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;316篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;从成龙说起：这届中国男明星不行&quot;, &quot;time&quot;: &quot;2018-12-10 19:51&quot;, &quot;share&quot;: &quot;10&quot;, &quot;recoment&quot;: &quot;2&quot;, &quot;anthor&quot;: &quot;腾讯《大家》©&quot;, &quot;intro&quot;: &quot;精选大家文章，畅享阅读时光。&quot;, &quot;passNum&quot;: &quot;119篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;互联网寒冬，不是深渊，而是阶梯&quot;, &quot;time&quot;: &quot;2018-12-10 19:36&quot;, &quot;share&quot;: &quot;14&quot;, &quot;recoment&quot;: &quot;2&quot;, &quot;anthor&quot;: &quot;瞎说职场©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;8篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;【虎嗅晚报】和山寨Supreme合作？三星：这是意大利Supreme&quot;, &quot;time&quot;: &quot;2018-12-10 19:29&quot;, &quot;share&quot;: &quot;1&quot;, &quot;recoment&quot;: &quot;0&quot;, &quot;anthor&quot;: &quot;敲敲格&quot;, &quot;intro&quot;: &quot;空山无人&quot;, &quot;passNum&quot;: &quot;150篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;老干妈：不上市的底气与逻辑&quot;, &quot;time&quot;: &quot;2018-12-10 18:28&quot;, &quot;share&quot;: &quot;9&quot;, &quot;recoment&quot;: &quot;6&quot;, &quot;anthor&quot;: &quot;中国经济信息杂志©&quot;, &quot;intro&quot;: &quot;信息改变生存质量&quot;, &quot;passNum&quot;: &quot;5篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;2018，一文看尽AI发展真相&quot;, &quot;time&quot;: &quot;2018-12-10 18:16&quot;, &quot;share&quot;: &quot;18&quot;, &quot;recoment&quot;: &quot;0&quot;, &quot;anthor&quot;: &quot;新智元&quot;, &quot;intro&quot;: &quot;人工智能全产业平台&quot;, &quot;passNum&quot;: &quot;52篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;《任天堂明星大乱斗：特别版》：我们都爱“大杂烩”&quot;, &quot;time&quot;: &quot;2018-12-10 17:54&quot;, &quot;share&quot;: &quot;1&quot;, &quot;recoment&quot;: &quot;1&quot;, &quot;anthor&quot;: &quot;我不叫塞尔达&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;81篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;罗玉凤不认命&quot;, &quot;time&quot;: &quot;2018-12-10 17:46&quot;, &quot;share&quot;: &quot;25&quot;, &quot;recoment&quot;: &quot;12&quot;, &quot;anthor&quot;: &quot;盖饭人物ThePeople©&quot;, &quot;intro&quot;: &quot;冷眼看人间，心如火焰。&quot;, &quot;passNum&quot;: &quot;3篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;星巴克被骂上热搜，新会员体系把老用户都气哭了&quot;, &quot;time&quot;: &quot;2018-12-10 16:40&quot;, &quot;share&quot;: &quot;10&quot;, &quot;recoment&quot;: &quot;9&quot;, &quot;anthor&quot;: &quot;运营研究社&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;13篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;雀巢紧急召回一批问题奶粉，可致婴儿恶心呕吐&quot;, &quot;time&quot;: &quot;2018-12-10 16:36&quot;, &quot;share&quot;: &quot;5&quot;, &quot;recoment&quot;: &quot;0&quot;, &quot;anthor&quot;: &quot;每日经济新闻©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;78篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;8012年了，我们为什么还沉迷于“捏脸”游戏？&quot;, &quot;time&quot;: &quot;2018-12-10 16:27&quot;, &quot;share&quot;: &quot;9&quot;, &quot;recoment&quot;: &quot;3&quot;, &quot;anthor&quot;: &quot;看理想©&quot;, &quot;intro&quot;: &quot;“看理想”诞生于知名出版品牌“...&quot;, &quot;passNum&quot;: &quot;57篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;广州三重奏：认识中国“南方”的一个视角&quot;, &quot;time&quot;: &quot;2018-12-10 16:25&quot;, &quot;share&quot;: &quot;21&quot;, &quot;recoment&quot;: &quot;0&quot;, &quot;anthor&quot;: &quot;东方历史评论©&quot;, &quot;intro&quot;: &quot;《东方历史评论》杂志官方微信账...&quot;, &quot;passNum&quot;: &quot;3篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;得了癌症，怎么告诉孩子&quot;, &quot;time&quot;: &quot;2018-12-10 16:00&quot;, &quot;share&quot;: &quot;19&quot;, &quot;recoment&quot;: &quot;1&quot;, &quot;anthor&quot;: &quot;谢熊猫君&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;7篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;从校园到职场：什么是职场经验&quot;, &quot;time&quot;: &quot;2018-12-10 15:43&quot;, &quot;share&quot;: &quot;38&quot;, &quot;recoment&quot;: &quot;5&quot;, &quot;anthor&quot;: &quot;caoz的梦呓©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;70篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;我们不禁要问：这些怪物在科学的地图周围在做什么呢？&quot;, &quot;time&quot;: &quot;2018-12-10 15:10&quot;, &quot;share&quot;: &quot;15&quot;, &quot;recoment&quot;: &quot;1&quot;, &quot;anthor&quot;: &quot;一席©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;37篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;一边卖命，一边求生，300万中国底层现状&quot;, &quot;time&quot;: &quot;2018-12-10 14:36&quot;, &quot;share&quot;: &quot;31&quot;, &quot;recoment&quot;: &quot;6&quot;, &quot;anthor&quot;: &quot;一条©&quot;, &quot;intro&quot;: &quot;每天一条原创短视频，每天讲述一...&quot;, &quot;passNum&quot;: &quot;1篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;像拍《海王》一样拍《西游记》，会是什么样？&quot;, &quot;time&quot;: &quot;2018-12-10 14:30&quot;, &quot;share&quot;: &quot;13&quot;, &quot;recoment&quot;: &quot;10&quot;, &quot;anthor&quot;: &quot;壹条电影©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;4篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;DC翻身作《海王》，其实是一部环保教育宣传片&quot;, &quot;time&quot;: &quot;2018-12-10 14:00&quot;, &quot;share&quot;: &quot;6&quot;, &quot;recoment&quot;: &quot;8&quot;, &quot;anthor&quot;: &quot;PingWest品玩©&quot;, &quot;intro&quot;: &quot;有品好玩的科技，一切与你有关&quot;, &quot;passNum&quot;: &quot;71篇文章&quot;&#125;</span><br><span class="line">&#123;&quot;title&quot;: &quot;平台&amp;大媒体都在输血本地新闻，  这样的合作模式真的可持续吗？&quot;, &quot;time&quot;: &quot;2018-12-10 14:00&quot;, &quot;share&quot;: &quot;8&quot;, &quot;recoment&quot;: &quot;2&quot;, &quot;anthor&quot;: &quot;全媒派©&quot;, &quot;intro&quot;: &quot;&quot;, &quot;passNum&quot;: &quot;78篇文章&quot;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>到目前为止，第一页的文章已经处理掉了，本以为一切自然一帆风顺的，万事皆大欢喜，不就多爬几页嘛，一个循环不就得了。事实证明我想得简单了。<br>当点击第一页下面这个“加载更多”时，发现其经过了JavaScript渲染。<br><img src="https://upload-images.jianshu.io/upload_images/13155641-ad47745debd914d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HuXiu.png"></p>
+<p>分析该请求的方式和地址，包括参数，如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-0675b53ddc98158c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HuXiu.png"></p>
+<p>得到以下信息：</p>
+<ol>
+<li>页面请求地址为：<a href="https://www.huxiu.com/v2_action/article_list" target="_blank" rel="noopener">https://www.huxiu.com/v2_action/article_list</a></li>
+<li>请求方式：POST</li>
+<li>请求参数比较重要的是一个叫做page的参数</li>
+</ol>
+<h3 id="3-1-2-使用PySpider爬取动态加载页面"><a href="#3-1-2-使用PySpider爬取动态加载页面" class="headerlink" title="3.1.2 使用PySpider爬取动态加载页面"></a>3.1.2 使用PySpider爬取动态加载页面</h3><p>on_start 函数内部编写循环事件，我们本次爬取2000页；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@every(minutes=24 * 60)</span><br><span class="line">    def on_start(self):</span><br><span class="line">        for page in range(1,2000):</span><br><span class="line">            print(&quot;正在爬取第 &#123;&#125; 页&quot;.format(page))</span><br><span class="line">            self.crawl(&apos;https://www.huxiu.com/v2_action/article_list&apos;, method=&quot;POST&quot;,data=&#123;&quot;page&quot;:page&#125;,callback=self.parse_page,validate_cert=False)</span><br></pre></td></tr></table></figure></p>
+<p>页面生成完毕之后，开始调用parse_page 函数，用来解析 crawl() 方法爬取 URL 成功后返回的 Response 响应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def parse_page(self, response):</span><br><span class="line">        content = response.json[&quot;data&quot;]</span><br><span class="line">        doc = pq(content)</span><br><span class="line">        lis = doc(&apos;.mod-art&apos;).items()</span><br><span class="line">        data = [&#123;</span><br><span class="line">           &apos;title&apos;: item(&apos;.msubstr-row2&apos;).text(),</span><br><span class="line">           &apos;url&apos;:&apos;https://www.huxiu.com&apos;+ str(item(&apos;.msubstr-row2&apos;).attr(&apos;href&apos;)),</span><br><span class="line">           &apos;name&apos;: item(&apos;.author-name&apos;).text(),</span><br><span class="line">           &apos;write_time&apos;:item(&apos;.time&apos;).text(),</span><br><span class="line">           &apos;comment&apos;:item(&apos;.icon-cmt+ em&apos;).text(),</span><br><span class="line">           &apos;favorites&apos;:item(&apos;.icon-fvr+ em&apos;).text(),</span><br><span class="line">           &apos;abstract&apos;:item(&apos;.mob-sub&apos;).text()</span><br><span class="line">           &#125; for item in lis ] </span><br><span class="line">        return data</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>最后，定义一个 on_result() 方法，该方法专门用来获取 return 的结果数据。这里用来接收上面 parse_page() 返回的 data 数据，在该方法可以将数据保存到 MongoDB 中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def on_result(self, result):</span><br><span class="line">        if result:</span><br><span class="line">            self.save_to_mongo(result)</span><br><span class="line">    </span><br><span class="line">    def save_to_mongo(self, result):</span><br><span class="line">        df = pd.DataFrame(result)</span><br><span class="line">        content = json.loads(df.T.to_json()).values()</span><br><span class="line">        if mongo_collection.insert_many(content):</span><br><span class="line">            print(&apos;存储到mongodb成功&apos;)</span><br><span class="line">            sleep = np.random.randint(1,5)</span><br><span class="line">            time.sleep(sleep)</span><br></pre></td></tr></table></figure></p>
+<p>pyspider 以 URL的 MD5 值作为 唯一 ID 编号，ID 编号相同，就视为同一个任务， 不会再重复爬取。<br>GET 请求的分页URL 一般不同，所以 ID 编号会不同，能够爬取多页。<br>POST 请求的URL是相同的，爬取第一页之后，后面的页数便不会再爬取。<br>为了爬取第2页及之后，重新写下 ID 编号的生成方式，在 on_start() 方法前面添加下面代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def get_taskid(self,task):</span><br><span class="line">        return md5string(task[&apos;url&apos;]+json.dumps(task[&apos;fetch&apos;].get(&apos;data&apos;,&apos;&apos;)))</span><br></pre></td></tr></table></figure></p>
+<p>数据保存到 了MongoDB 中：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-3c79f8de5c2ccc59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MongoDB.png"></p>
+<p>共计2000页， 28222篇文章。抓取 了 7 个字段信息：文章标题、作者、发文时间、评论数、收藏数、摘要和文章链接。</p>
+<h4 id="3-2-数据清洗"><a href="#3-2-数据清洗" class="headerlink" title="3.2 数据清洗"></a>3.2 数据清洗</h4><p>首先，我们需要从 MongoDB 中读取数据，并转换为 DataFrame。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">client = pymongo.MongoClient(host=&apos;localhost&apos;, port=27017)</span><br><span class="line">db = client[&apos;Huxiu&apos;]</span><br><span class="line">collection = db[&apos;News&apos;]</span><br><span class="line"># 将数据库数据转为dataFrame</span><br><span class="line">data = pd.DataFrame(list(collection.find()))</span><br></pre></td></tr></table></figure></p>
+<p>下面我们看一下数据的行数和列数，整体情况及数据的前五行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#查看行数和列数</span><br><span class="line">print(data.shape)</span><br><span class="line">#查看总体情况</span><br><span class="line">print(data.info())</span><br></pre></td></tr></table></figure></p>
+<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(28222, 8)</span><br><span class="line">RangeIndex: 28222 entries, 0 to 28221</span><br><span class="line">Data columns (total 8 columns):</span><br><span class="line">_id           28222 non-null object</span><br><span class="line">abstract      28222 non-null object</span><br><span class="line">comment       28222 non-null object</span><br><span class="line">favorites     28222 non-null object</span><br><span class="line">name          28222 non-null object</span><br><span class="line">title         28222 non-null object</span><br><span class="line">url           28222 non-null object</span><br><span class="line">write_time    28222 non-null object</span><br></pre></td></tr></table></figure></p>
+<p>可以看到数据的维度是 28222行 × 8 列。发现多了一列无用的 _id 需删除，同时 name 列有一些特殊符号，比如© 需删除。另外，数据格式全部为 Object 字符串格式，需要将 comment 和 favorites 两列更改为数值格式、 write_time 列更改为日期格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 删除无用的_id列</span><br><span class="line">data.drop([&apos;_id&apos;], axis=1, inplace=True)</span><br><span class="line"># 删除特殊符号@</span><br><span class="line">data[&apos;name&apos;].replace(&apos;@&apos;,&apos;&apos;,inplace=True,regex=True)</span><br><span class="line">data_duplicated = data.duplicated().value_counts()</span><br><span class="line"># 将数据列改为数值列</span><br><span class="line">data = data.apply(pd.to_numeric, errors=&apos;ignore&apos;)</span><br><span class="line"># 修改时间，并转换为datetime格式</span><br><span class="line">data[&apos;write_time&apos;] = pd.to_datetime(data[&apos;write_time&apos;])</span><br><span class="line">data = data.reset_index(drop=True)</span><br></pre></td></tr></table></figure></p>
+<p>下面，我们看一下数据是否有重复，如果有，那么需要删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 删除重复值</span><br><span class="line">data = data.drop_duplicates(keep=&apos;first&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>我们再增加两列数据，一列是文章标题长度列，一列是年份列，便于后面进行分析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 增加标题长度列</span><br><span class="line">data[&apos;title_length&apos;] = data[&apos;title&apos;].apply(len)</span><br><span class="line"># 年份列</span><br><span class="line">data[&apos;year&apos;] = data[&apos;write_time&apos;].dt.year</span><br></pre></td></tr></table></figure></p>
+<p>以上，就完成了基本的数据清洗处理过程，针对这 9 列数据开始进行分析。</p>
+<h2 id="四、数据统计分析"><a href="#四、数据统计分析" class="headerlink" title="四、数据统计分析"></a>四、数据统计分析</h2><h3 id="4-1-整体情况"><a href="#4-1-整体情况" class="headerlink" title="4.1 整体情况"></a>4.1 整体情况</h3><p>先来看一下总体情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(data.describe())</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">            comment     favorites  title_length          year</span><br><span class="line">count  27236.000000  27236.000000  27236.000000  27236.000000</span><br><span class="line">mean       9.030988     40.480761     23.010501   2016.382288</span><br><span class="line">std       14.912655     52.381115      8.376050      1.516007</span><br><span class="line">min        0.000000      0.000000      3.000000   2012.000000</span><br><span class="line">25%        3.000000     12.000000     17.000000   2016.000000</span><br><span class="line">50%        6.000000     24.000000     23.000000   2017.000000</span><br><span class="line">75%       11.000000     48.000000     28.000000   2017.000000</span><br><span class="line">max      914.000000    787.000000    124.000000   2018.000000</span><br></pre></td></tr></table></figure></p>
+<p>使用了 data.describe() 方法对数值型变量进行统计分析。从上面可以简要得出以下几个结论：</p>
+<ul>
+<li>读者的评论和收藏热情都不算太高。大部分文章（75 %）的评论数量为十几条，收藏数量不过几十个。这和一些微信大 V 公众号动辄百万级阅读、数万级评论和收藏量相比，虎嗅网的确相对小众一些。不过也正是因为小众，也才深得部分人的喜欢。</li>
+<li>评论数最多的文章有914 条，收藏数最多的文章有 787 个收藏量，说明还是有一些潜在的比较火或者质量比较好的文章。</li>
+<li>最长的文章标题长达 124 个字，大部分文章标题长度在 20 来个字左右，所以标题最好不要太长或过短。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(data[&apos;name&apos;].describe())</span><br><span class="line">print(data[&apos;write_time&apos;].describe())</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">count     27236</span><br><span class="line">unique     3334</span><br><span class="line">top          虎嗅</span><br><span class="line">freq       2289</span><br><span class="line">count                   27236</span><br><span class="line">unique                   1390</span><br><span class="line">top       2017-04-25 00:00:00</span><br><span class="line">freq                       44</span><br><span class="line">first     2012-06-27 00:00:00</span><br><span class="line">last      2018-10-20 00:00:00</span><br></pre></td></tr></table></figure></p>
+<p>unique 表示唯一值数量，top 表示出现次数最多的变量，freq 表示该变量出现的次数，所以可以简单得出以下几个结论：</p>
+<ul>
+<li>在文章来源方面，3334 个作者贡献了这 27236篇文章，其中自家官网「虎嗅」写的数量最多，有2289篇，这也很自然。</li>
+<li>在文章发表时间方面，最早的一篇文章来自于 2012年 6 月 27日。 6 年多时间，发文数最多的 1 天 是 2017 年4 月 25 日，一共发了 44 篇文章。<h3 id="4-2-虎嗅网文章发布数量变化"><a href="#4-2-虎嗅网文章发布数量变化" class="headerlink" title="4.2 虎嗅网文章发布数量变化"></a>4.2 虎嗅网文章发布数量变化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def analysis1(data):</span><br><span class="line"></span><br><span class="line">	data.set_index(data[&apos;write_time&apos;], inplace=True)</span><br><span class="line">	data = data.resample(&apos;Q&apos;).count()[&apos;name&apos;] # 以季度汇总</span><br><span class="line">	data = data.to_period(&apos;Q&apos;)</span><br><span class="line"></span><br><span class="line">	# 创建x,y轴标签</span><br><span class="line">	x = np.arange(0, len(data), 1)</span><br><span class="line">	axl.plot(x, data.values,</span><br><span class="line">		color = color_line,</span><br><span class="line">		marker = &apos;o&apos;, markersize = 4</span><br><span class="line">		)</span><br><span class="line">	axl.set_xticks(x) # 设置x轴标签为自然数序列</span><br><span class="line">	axl.set_xticklabels(data.index) # 更改x轴标签值为年份</span><br><span class="line">	plt.xticks(rotation=90) # 旋转90度，不至于太拥挤</span><br><span class="line"></span><br><span class="line">	for x,y in zip(x,data.values):</span><br><span class="line">		plt.text(x,y + 10, &apos;%.0f&apos; %y,ha = &apos;center&apos;, color = colors, fontsize=fontsize_text)</span><br><span class="line">	# 设置标题及横纵坐标轴标题</span><br><span class="line">	plt.title(&apos;虎嗅网文章数量发布变化(2012-2018)&apos;, color = colors, fontsize=fontsize_title)</span><br><span class="line">	plt.xlabel(&apos;时期&apos;)</span><br><span class="line">	plt.ylabel(&apos;文章（篇）&apos;)</span><br><span class="line">	plt.tight_layout() # 自动控制空白边缘</span><br><span class="line">	plt.savefig(&apos;虎嗅网文章数量发布变化.png&apos;, dip=200)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-2625721c1ea0331b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="虎嗅网文章发布数量变化.png"></p>
+<p>可以看到 ，以季度为时间尺度的 6 年间，12年-15年发文数量比较稳定，大概在400篇左右。但2016 年之后文章开始增加到 2000 篇以上，可能跟虎嗅网于2015年2月上市有关。首尾两个季度日期不全，所以数量比较少。</p>
+<h3 id="4-3-文章收藏量TOP10"><a href="#4-3-文章收藏量TOP10" class="headerlink" title="4.3 文章收藏量TOP10"></a>4.3 文章收藏量TOP10</h3><p>几万篇文章里，到底哪些文章写得比较好或者比较火？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">top = data.sort_values(&apos;favorites&apos;, ascending=False)</span><br><span class="line">	top.index=(range(1,len(top.index)+1))</span><br><span class="line">	print(top[:10][[&apos;title&apos;,&apos;favorites&apos;,&apos;comment&apos;]])</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">                             title  favorites  comment</span><br><span class="line">1                        货币如水，覆水难收        787       39</span><br><span class="line">2                            自杀经济学        781      119</span><br><span class="line">3   2016年已经起飞的5只黑天鹅，都在罗振宇这份跨年演讲全文里        774       39</span><br><span class="line">4               真正强大的商业分析能力是怎样炼成的？        747       18</span><br><span class="line">5                        藏在县城的万亿生意        718       35</span><br><span class="line">6                           腾讯没有梦想        707       32</span><br><span class="line">7               段永平连答53问，核心是“不为清单”        706       27</span><br><span class="line">8                          王健林的滑铁卢        703       92</span><br><span class="line">9                           7-11不死        691       17</span><br><span class="line">10            游戏策划人士：为什么我的儿子不沉迷游戏？        644       33</span><br></pre></td></tr></table></figure></p>
+<p>发现两个有意思的地方：第一，文章标题都比较短小精炼。第二，文章收藏量虽然比较高，但评论数都不多，猜测这是因为——大家都喜欢做伸手党？</p>
+<h3 id="4-4-历年TOP3文章收藏比较"><a href="#4-4-历年TOP3文章收藏比较" class="headerlink" title="4.4 历年TOP3文章收藏比较"></a>4.4 历年TOP3文章收藏比较</h3><p>在了解文章的总体排名之后，我们来看看历年的文章排名是怎样的。这里，每年选取了收藏量最多的 3 篇文章。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">def analysis2(data):</span><br><span class="line">	def topn(data):</span><br><span class="line">		top = data.sort_values(&apos;favorites&apos;, ascending=False)</span><br><span class="line">		return top[:3]</span><br><span class="line"></span><br><span class="line">	data = data.groupby(by=[&apos;year&apos;]).apply(topn)</span><br><span class="line">	print(data[[&apos;title&apos;, &apos;favorites&apos;]])</span><br><span class="line"></span><br><span class="line">	# 增加每年top123列，列依次值为1、2、3</span><br><span class="line">	data[&apos;add&apos;] = 1 # 辅助</span><br><span class="line">	data[&apos;top&apos;] = data.groupby(by=&apos;year&apos;)[&apos;add&apos;].cumsum()</span><br><span class="line"></span><br><span class="line">	data_reshape = data.pivot_table(index=&apos;year&apos;, columns=&apos;top&apos;, values=&apos;favorites&apos;).reset_index()</span><br><span class="line">	print(data_reshape)</span><br><span class="line">	data_reshape.plot(</span><br><span class="line">		y = [1,2,3],</span><br><span class="line">		kind = &apos;bar&apos;,</span><br><span class="line">		width = 0.3,</span><br><span class="line">		color = [&apos;#1362A3&apos;, &apos;#3297EA&apos;, &apos;#8EC6F5&apos;]</span><br><span class="line">		)</span><br><span class="line">	# 添加x轴标签</span><br><span class="line">	years = data[&apos;year&apos;].unique()</span><br><span class="line">	plt.xticks(list(range(7)), years)</span><br><span class="line">	plt.xlabel(&apos;Year&apos;)</span><br><span class="line">	plt.ylabel(&apos;文章收藏数量&apos;)</span><br><span class="line">	plt.title(&apos;历年TOP3文章收藏比较&apos;, color = colors, fontsize = fontsize_title)</span><br><span class="line">	plt.tight_layout()</span><br><span class="line">	plt.savefig(&apos;历年TOP3文章收藏比较.png&apos;, dpi=200)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-381ede2c481c64b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="历年TOP3文章收藏比较.png"></p>
+<p>可以看到，文章收藏量是逐年递增的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">year                                                title                 favorites</span><br><span class="line">2012 3199                                   怎么做难做的本地生活服务？        106</span><br><span class="line">     2236                                     经营微博的十个经典案例        101</span><br><span class="line">     3449                          《大数据时代》，一场生活、工作与思维的大变革         91</span><br><span class="line">2013 3795                                情色网站启示：请尊重你不懂的领域        246</span><br><span class="line">     235                                周鸿祎的一部分，由他读的这些书构成        245</span><br><span class="line">     4071   如果你不想老被思考的陷阱绊倒，建议熟读《清醒思考的艺术:你最好让别人去犯的52种思维错误》</span><br><span class="line">      221</span><br><span class="line">2014 660                           阿里巴巴怎么看O2O对商业生态的破局与重构？        443</span><br><span class="line">     2413     别等中文译本了，Peter Thiel《Zero to One》中的13条逆向创业观点        308</span><br><span class="line">     2563                              这是迄今还原得最完整的——“雷军系”        278</span><br><span class="line">2015 4107                   看了这套PPT，你就知道房地产商将要如何玩转社区O2O的啦        452</span><br><span class="line">     3298                           不要再徒手创业了，这些好用的工具软件请拿走        372</span><br><span class="line">     4373                      非常赞的文章！告诉你一个你知其然却不知其所以然的硅谷        357</span><br><span class="line">2016 418                       蝗虫般的刷客大军：手握千万手机号，分秒间薅干一家平台        554</span><br><span class="line">     12618                            准CEO必读的这20本书，你读过几本？        548</span><br><span class="line">     17225                        运营简史：一文读懂互联网运营的20年发展与演变        505</span><br><span class="line">2017 21898                 2016年已经起飞的5只黑天鹅，都在罗振宇这份跨年演讲全文里        774</span><br><span class="line">     144                               真正强大的商业分析能力是怎样炼成的？        747</span><br><span class="line">     11471                                        王健林的滑铁卢        703</span><br><span class="line">2018 19686                                      货币如水，覆水难收        787</span><br><span class="line">     19230                                          自杀经济学        781</span><br><span class="line">     16362                                      藏在县城的万亿生意        718</span><br></pre></td></tr></table></figure></p>
+<p>可以看到标题起地都蛮有水准的。关于标题的重要性，有这样通俗的说法：「一篇好文章，标题占一半」，一个好的标题可以大大增强文章的传播力和吸引力。文章标题虽只有短短数十字，但要想起好，里面也是很有很多技巧的。</p>
+<h3 id="4-5-发文数量最多的TOP20作者"><a href="#4-5-发文数量最多的TOP20作者" class="headerlink" title="4.5 发文数量最多的TOP20作者"></a>4.5 发文数量最多的TOP20作者</h3><p>上面，我们从收藏量指标进行了分析,下面，我们关注一下发布文章的作者（个人/媒体）。前面提到发文最多的是虎嗅官方，有一万多篇文章，这里我们筛除官媒，看看还有哪些比较高产的作者。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def analysis3(data):</span><br><span class="line">	data = data.groupby(data[&apos;name&apos;])[&apos;title&apos;].count()</span><br><span class="line">	data = data.sort_values(ascending=False)</span><br><span class="line">	print(data)</span><br><span class="line"></span><br><span class="line">	# pandas 直接绘制，invert_yaxis()颠倒顺序</span><br><span class="line">	data[1:21].plot(kind=&apos;barh&apos;,color=color_line).invert_yaxis()</span><br><span class="line"></span><br><span class="line">	for y,x in enumerate(list(data[1:21].values)):</span><br><span class="line">		plt.text(x+12,y+0.2,&apos;%s&apos; %round(x,1),ha=&apos;center&apos;,color=colors)</span><br><span class="line">	plt.xlabel(&apos;文章数量&apos;)</span><br><span class="line">	plt.ylabel(&apos;作者&apos;)</span><br><span class="line">	plt.title(&apos;发文数量最多的TOP20作者&apos;, color = colors, fontsize=fontsize_title)</span><br><span class="line">	</span><br><span class="line">	plt.tight_layout()</span><br><span class="line">	plt.savefig(&apos;发文数量最多的TOP20作者.png&apos;,dpi=200)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-aeb8dfc834128d12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="发文数量最多的TOP20作者.png"></p>
+<p>可以看到，前 20 名作者的发文量差距都不太大。发文比较多的有「娱乐资本论」、「发条橙子」、「界面」、「新浪科技」这类媒体号；也有虎嗅官网团队的作者：张博文、周超臣等；还有部分独立作者：假装FBI等。可以尝试关注一下这些高产作者。</p>
+<h3 id="4-6-文章评论数与收藏量的关系"><a href="#4-6-文章评论数与收藏量的关系" class="headerlink" title="4.6 文章评论数与收藏量的关系"></a>4.6 文章评论数与收藏量的关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def analysis6(data):</span><br><span class="line">	plt.scatter(data[&apos;favorites&apos;], data[&apos;comment&apos;], s=8, color=&apos;#1362A3&apos;)</span><br><span class="line">	plt.xlabel(&apos;文章收藏量&apos;)</span><br><span class="line">	plt.ylabel(&apos;文章评论数&apos;)</span><br><span class="line">	plt.title(&apos;文章评论数与收藏量关系&apos;, color = colors, fontsize=fontsize_title)</span><br><span class="line">	plt.tight_layout()</span><br><span class="line">	plt.savefig(&apos;文章评论数与收藏量关系.png&apos;, dpi=200)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-13b57236a8162e51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文章评论数与收藏量的关系.png"><br>可以看到，大多数点都位于左下角，意味着这些文章收藏量和评论数都比较低。但也存在少部分位于上方和右侧的异常值，表明这些文章呈现 「多评论、少收藏」或者「少评论、多收藏」的特点。</p>
+<h3 id="4-7-文章收藏量与标题长度关系"><a href="#4-7-文章收藏量与标题长度关系" class="headerlink" title="4.7 文章收藏量与标题长度关系"></a>4.7 文章收藏量与标题长度关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def analysis7(data):</span><br><span class="line">	plt.scatter(</span><br><span class="line">		x=data[&apos;favorites&apos;],</span><br><span class="line">		y=data[&apos;title_length&apos;],</span><br><span class="line">		s=8,</span><br><span class="line">		)</span><br><span class="line">	plt.xlabel(&apos;文章收藏量&apos;)</span><br><span class="line">	plt.ylabel(&apos;文章标题长度&apos;)</span><br><span class="line">	plt.title(&apos;文章收藏量和标题长度关系&apos;, color = colors, fontsize=fontsize_title)</span><br><span class="line">	plt.tight_layout()</span><br><span class="line">	plt.savefig(&apos;文章收藏量和标题长度关系.png&apos;, dpi=200)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-b75eb423aa361d98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文章收藏量与标题长度关系.png"><br>大致可以看出两点现象：</p>
+<ul>
+<li>第一 ，收藏量高的文章，他们的标题都比较短（右侧的部分散点）。</li>
+<li>第二，标题很长的文章，它们的收藏量都非常低（左边形成了一条垂直线）。<br>看来，文章起标题时最好不要起太长的。</li>
+</ul>
+<h3 id="4-8-三分之一以上文章的标题喜欢使用问号"><a href="#4-8-三分之一以上文章的标题喜欢使用问号" class="headerlink" title="4.8 三分之一以上文章的标题喜欢使用问号"></a>4.8 三分之一以上文章的标题喜欢使用问号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">def analysis10(data):</span><br><span class="line">	data1 = data[data[&apos;title&apos;].str.contains(&quot;(.*\？.*)|(.*\?.*)&quot;)]</span><br><span class="line">	data2 = data[data[&apos;title&apos;].str.contains(&quot;(.*\！.*)|(.*\!.*)&quot;)]</span><br><span class="line"></span><br><span class="line">	# 带有问号的标题数量</span><br><span class="line">	quantity1 = data1.shape[0]</span><br><span class="line">	# 带有叹号的标题数量</span><br><span class="line">	quantity2 = data2.shape[0]</span><br><span class="line">	# 剩余数量</span><br><span class="line">	quantity = data.shape[0] - data1.shape[0] - data2.shape[0]</span><br><span class="line"></span><br><span class="line">	sizes = [quantity2,quantity1,quantity]</span><br><span class="line">	labels = [u&apos;叹号标题&apos;,u&apos;问号标题&apos;,u&apos;陈述性标题&apos;]</span><br><span class="line">	colors_pie = [&apos;#1362A3&apos;,&apos;#3297EA&apos;,&apos;#8EC6F5&apos;] #每块颜色定义</span><br><span class="line">	explode = [0,0.05,0]</span><br><span class="line">	plt.pie(</span><br><span class="line">		sizes,</span><br><span class="line">		autopct=&apos;%.1f%%&apos;,</span><br><span class="line">		labels= labels,</span><br><span class="line">		colors =colors_pie,</span><br><span class="line">		shadow = False, #无阴影设置</span><br><span class="line">		startangle =90, #逆时针起始角度设置</span><br><span class="line">		explode = explode,</span><br><span class="line">		# textprops=&#123;&apos;fontsize&apos;: 14, &apos;color&apos;: &apos;w&apos;&#125; # 设置文字颜色</span><br><span class="line">		textprops=&#123;&apos;fontsize&apos;: 12, &apos;color&apos;: &apos;w&apos;&#125; # 设置文字颜色</span><br><span class="line">		)</span><br><span class="line">	plt.title(&apos;一半以上的文章的标题喜欢用问号&apos;,color=colors,fontsize=fontsize_title)</span><br><span class="line"></span><br><span class="line">	plt.axis(&apos;equal&apos;)</span><br><span class="line"></span><br><span class="line">	plt.axis(&apos;off&apos;)</span><br><span class="line">	plt.legend(loc = &apos;upper right&apos;)</span><br><span class="line">	plt.tight_layout()  # 自动控制空白边缘，以全部显示x轴名称</span><br><span class="line">	plt.savefig(&apos;title问号.png&apos;,dpi=200)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-eb4444c85b8d8587.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三分之一以上文章的标题喜欢使用问号.png"></p>
+<p>### </p>
+<h2 id="五、绘制词云图"><a href="#五、绘制词云图" class="headerlink" title="五、绘制词云图"></a>五、绘制词云图</h2><p>我们通过绘制2013-2018年词云图来说明来探究每年的热词和热点事件。其中，分词函数用的是王师兄推荐的jieba分词。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">def analysis9(data):</span><br><span class="line">	jieba.load_userdict(&quot;userdict.txt&quot;)</span><br><span class="line">    </span><br><span class="line">	text=&apos;&apos;</span><br><span class="line">	for i in data[&apos;title&apos;].values:</span><br><span class="line">	# for i in data[data.year == 2018][&apos;title&apos;].values:</span><br><span class="line">		# 替换无用字符</span><br><span class="line">		symbol_to_replace = &apos;[!&quot;#$%&amp;\&apos;()*+,-./:;&lt;=&gt;?@，。?★、…【】《》？“”‘’！[\\]^_`&#123;|&#125;~]+&apos;</span><br><span class="line">		# data[&apos;name&apos;].str.replace(symbol_to_replace,&apos;&apos;,inplace=True,regex=True)</span><br><span class="line">		i = re.sub(symbol_to_replace,&apos;&apos;,i)</span><br><span class="line">		# print(i)</span><br><span class="line">		text+=&apos; &apos;.join(jieba.cut(i,cut_all=False))</span><br><span class="line"></span><br><span class="line">	# text = jieba.del_word(&apos;如何&apos;)</span><br><span class="line">	d = path.dirname(__file__) if &quot;__file__&quot; in locals() else os.getcwd()</span><br><span class="line"></span><br><span class="line">	background_Image = np.array(Image.open(path.join(d, &quot;tiger.jpg&quot;)))</span><br><span class="line">	# background_Image = plt.imread(&apos;./tiger.jpg&apos;)</span><br><span class="line"></span><br><span class="line">	font_path = &apos;C:\Windows\Fonts\simhei.ttf&apos;  # 思源黑,黑体simhei.ttf</span><br><span class="line">	# 添加stopswords</span><br><span class="line">	stopwords = set()</span><br><span class="line">	# 先运行对text进行词频统计再排序，再选择要增加的停用词</span><br><span class="line">	stopwords.update([&apos;如何&apos;,&apos;怎么&apos;,&apos;一个&apos;,&apos;什么&apos;,&apos;为什么&apos;,&apos;还是&apos;,&apos;我们&apos;,&apos;为何&apos;,&apos;可能&apos;,&apos;不是&apos;,&apos;没有&apos;,&apos;哪些&apos;,&apos;成为&apos;,&apos;可以&apos;,&apos;背后&apos;,&apos;到底&apos;,&apos;就是&apos;,&apos;这么&apos;,&apos;不要&apos;,&apos;怎样&apos;,&apos;为了&apos;,&apos;能否&apos;,&apos;你们&apos;,&apos;还有&apos;,&apos;这样&apos;,&apos;这个&apos;,&apos;真的&apos;,&apos;那些&apos;])</span><br><span class="line"></span><br><span class="line">	wc = WordCloud(</span><br><span class="line">		# background_color = &apos;#3F3F3F&apos;,</span><br><span class="line">		# background_color = &apos;white&apos;,</span><br><span class="line">		background_color = &apos;black&apos;,</span><br><span class="line">		font_path = font_path,</span><br><span class="line">		mask = background_Image,</span><br><span class="line">		stopwords = stopwords,</span><br><span class="line">		max_words = 200,</span><br><span class="line">		# width = 1000,height=600,</span><br><span class="line">		margin =2,</span><br><span class="line">		max_font_size = 100,</span><br><span class="line">		random_state = 42,</span><br><span class="line">		scale = 2,</span><br><span class="line">		# colormap = &apos;viridis&apos;</span><br><span class="line">	)</span><br><span class="line">	wc.generate_from_text(text)</span><br><span class="line"></span><br><span class="line">	process_word = WordCloud.process_text(wc, text)</span><br><span class="line">	# 下面是字典排序</span><br><span class="line">	sort = sorted(process_word.items(),key=lambda e:e[1],reverse=True) # sort为list</span><br><span class="line">	print(sort[:50])  # 输出前词频最高的前50个，然后筛选出不需要的stopwords，添加到前面的stopwords.update()方法中</span><br><span class="line">	img_colors = ImageColorGenerator(background_Image)</span><br><span class="line">	wc.recolor(color_func=img_colors)  # 颜色跟随图片颜色</span><br><span class="line"></span><br><span class="line">	plt.imshow(wc,interpolation=&apos;bilinear&apos;)</span><br><span class="line">	plt.axis(&apos;off&apos;)</span><br><span class="line">	plt.tight_layout()  # 自动控制空白边缘，以全部显示x轴名称</span><br><span class="line">	plt.savefig(&apos;huxiu5.png&apos;,dpi=200)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br>2018年：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-d6b92803e65194ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2018.png"><br>2017年：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-ce4e45aeea486142.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2017.png"><br>2016年：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-f684f9188d5656f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2016.png"><br>2015年：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-9e1d13dbeabde0df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2015.png"><br>2014年：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-0e54a679a0bfbbe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2014.png"><br>2013年：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-e1acd82f02d26fce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2013.png"></p>
+<p>可以看到每年的关键词都有一些相同之处，但也不同的地方：</p>
+<ul>
+<li>中国、互联网、公司、苹果、腾讯、阿里等这些热门关键词一直都是热门，唯有BAT中的百度较为低调，唯有2016、2017年百度因为“魏泽西”事件，被迫“崭露头角”。当时，百度的负面新闻甚嚣尘上，像这种[百度大势已去——从魏则西事件说起]<a href="https://www.jianshu.com/p/1284ead05ff2的谩骂和批评声不绝于耳。" target="_blank" rel="noopener">https://www.jianshu.com/p/1284ead05ff2的谩骂和批评声不绝于耳。</a></li>
+<li>每年会有新热点涌现：<br>比如 2013 年的微信（刚开始火），从日后的用户数据报道也可见一端[2013微信活跃用户增1104% 全球增长最快]<a href="http://www.ebrun.com/20140529/100398.shtml、" target="_blank" rel="noopener">http://www.ebrun.com/20140529/100398.shtml、</a><br>2015，李克强总理提出“大众创业、万众创新”，掀起了创业热潮，而2016年与2015年相比，态势减弱；<br>2016 年的直播（各大直播平台如雨后春笋般出现）、2017年的AI手机兴起；2018年的小米上市、滴滴事件。</li>
+<li>不断有新的热门技术出现：2014 – 2015 年的 O2O、2016 年的 VR、直播、2017 年的 人工智能 、2018 年的「区块链」。这些科技前沿技术也是这几年大家口耳相传的热门词汇。<br>通过这几幅图，就看出了这几年科技互联网行业及热点信息的风云变化。<h2 id="六、文本挖掘-主题模型"><a href="#六、文本挖掘-主题模型" class="headerlink" title="六、文本挖掘(主题模型)"></a>六、文本挖掘(主题模型)</h2><h3 id="6-1-理论"><a href="#6-1-理论" class="headerlink" title="6.1 理论"></a>6.1 理论</h3>在上面，我们用到了词云图，词云图是根据词在文档中出现的频数来决定和绘制的，这很直观地显示出了每年最火、最热、使用率最高的词。但是，词云图并不能分析和描绘文档和文档之间的相互关系，更不能探究文字间的潜在语义信息，而LDA很多地弥补和改善了诸多缺点。</li>
+</ul>
+<p>主题模型的具体理论是很复杂的，我们暂且可以把他当做一个黑箱。了解参数，实现算法，得到我们想要的东西。主题模型在计算机科学和数据科学的学术讲座中，讲者在介绍到LDA时，都往往会把原理这部分直接跳过去。就像我们不需要把汽车发动机原理搞清楚就可以开车一样，我们同样可以使用LDA主题词模型来提取主题词。当然，你也可以参考这篇文章：[通俗理解LDA主题模型]<a href="https://blog.csdn.net/yhao2014/article/details/51098037。" target="_blank" rel="noopener">https://blog.csdn.net/yhao2014/article/details/51098037。</a></p>
+<h3 id="6-2-实现"><a href="#6-2-实现" class="headerlink" title="6.2 实现"></a>6.2 实现</h3><p>在实现主题模型之前，本文利用R语言中的segmentCN中文分词函数之后去除了停止词。当然这里同样可以使用Python中的jieba去除停用词。</p>
+<p>停用词是指在信息检索中，为节省存储空间和提高搜索效率，在处理自然语言数据（或文本）之前或之后会自动过滤掉某些字或词，这些字或词即被称为Stop Words（停用词）。这些停用词都是人工输入、非自动化生成的，生成后的停用词会形成一个停用词表。</p>
+<p>本文用到的停用词库中含有1959个常用停止词，<br>这里给出云盘链接，需要者自取：<a href="https://pan.baidu.com/s/1j7hxe6uFP_rUiHNxsKnkqw" target="_blank" rel="noopener">https://pan.baidu.com/s/1j7hxe6uFP_rUiHNxsKnkqw</a><br>提取码：au37<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">## 一、数据预处理（初始数据整理）</span><br><span class="line">## 1.4读取资料库</span><br><span class="line">setwd(&quot;G:\\课程\\研一\\回归分析&quot;)</span><br><span class="line">#clipboard指的是HuXiu.txt用notepad打开后复制，防止中文乱码</span><br><span class="line">csv &lt;- read.table(&quot;clipboard&quot;,header=T, stringsAsFactors=F,quote = &quot;&quot;,encoding=&quot;utf-8&quot;)</span><br><span class="line">mystopwords&lt;-unlist(read.table(&quot;StopWords.txt&quot;,stringsAsFactors=F,quote = &quot;&quot;))</span><br><span class="line">###解决乱码问题</span><br><span class="line">head(csv)</span><br><span class="line">dim(csv)</span><br><span class="line">colnames(csv)&lt;-c(&quot;text&quot;)</span><br><span class="line">## 1.5.数据预处理（中文分词、stopword处理）</span><br><span class="line">#install.packages(&quot;tm&quot;,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#install.packages(&quot;Rcpp&quot;,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#install.packages(&quot;slam&quot;,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#install.packages(&quot;xml2&quot;,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#install.packages(&quot;rJava&quot;,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(xml2,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(Rcpp,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(slam,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(NLP,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(tm,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#只有RJava配置成功了，Rwordseg安装才可能成功，前者是后者的依赖包</span><br><span class="line">#install.packages(&quot;rJava&quot;,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">library(rJava,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#手动下载安装包Rwordseg，然后本地安装</span><br><span class="line">library(Rwordseg,lib=&quot;G:\\R语言\\R语言学习\\安装包&quot;)</span><br><span class="line">#(1)移除数字函数</span><br><span class="line">removeNumbers = function(x) &#123; ret = gsub(&quot;[0-9０１２３４５６７８９]&quot;,&quot;&quot;,x) &#125;</span><br><span class="line">#(2)segmentCN分词函数</span><br><span class="line">#中文分词，也可以考虑使用 rmmseg4j、rsmartcn </span><br><span class="line">wordsegment&lt;- function(x) &#123; </span><br><span class="line">  library(Rwordseg) </span><br><span class="line">  segmentCN(x)</span><br><span class="line">&#125; </span><br><span class="line">#(3)去除停止词函数 </span><br><span class="line">removeStopWords = function(x,words) &#123;     </span><br><span class="line">  ret = character(0) </span><br><span class="line">  index &lt;- 1 </span><br><span class="line">  it_max &lt;- length(x) </span><br><span class="line">  while (index &lt;= it_max) &#123; </span><br><span class="line">    if (length(words[words==x[index]]) &lt;1) ret &lt;- c(ret,x[index]) </span><br><span class="line">    index &lt;- index +1 </span><br><span class="line">  &#125; </span><br><span class="line">  ret </span><br><span class="line">&#125; </span><br><span class="line">#（1）移除数字</span><br><span class="line">sample.words &lt;- lapply(data[,1], removeNumbers) </span><br><span class="line">dim(as.matrix(sample.words))</span><br><span class="line">head(sample.words)</span><br><span class="line">#（2）中文分词</span><br><span class="line">sample.words &lt;- lapply(sample.words, wordsegment) </span><br><span class="line">dim(as.matrix(sample.words))</span><br><span class="line">sample.words[1:6]</span><br><span class="line">#（3）移除停止词</span><br><span class="line">#先处理中文分词，再处理 stopwords，防止全局替换丢失信息,</span><br><span class="line">#下面这句运行时间较长 </span><br><span class="line">sample.words &lt;- lapply(sample.words, removeStopWords, mystopwords) </span><br><span class="line">dim(as.matrix(sample.words))</span><br><span class="line">sample.words&lt;-as.matrix(sample.words)</span><br><span class="line">head(sample.words)</span><br><span class="line">text&lt;-sample.words[,1]</span><br><span class="line">colnames(sample.words)&lt;-c(&quot;text&quot;)</span><br><span class="line">write.csv(as.matrix(sample.words),&quot;delateddata.txt&quot;)</span><br><span class="line">write.csv(as.matrix(sample.words),&quot;delateddata.csv&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>去掉停止词后的结果为下：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-b8106a3fa87a7bc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>接着，我们继续使用Jupyter来进行LDA模型；<br>在Jupyter Notebook中新建一个Python 3笔记本，起名为LDA。<br><img src="https://upload-images.jianshu.io/upload_images/13155641-09ca1e2575bb9629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>导入文件处理包os</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.chdir(&apos;G:\\课程\\研一\\回归分析&apos;)  # 打印当前工作目录</span><br></pre></td></tr></table></figure>
+<p>为了处理表格数据，我们依然使用数据框工具Pandas。先调用它。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br></pre></td></tr></table></figure></p>
+<p>读入我们的数据文件，clipboard指的是delateddata.txt用notepad打开复制，为防止乱码，注意参数encoding设置为utf-8；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_clipboard()</span><br></pre></td></tr></table></figure></p>
+<p>查看数据的前几行，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head()</span><br></pre></td></tr></table></figure></p>
+<p>结果为下：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-922e9b410a510a2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>查看数据维度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.shape</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13155641-94a10dca38df955c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>导入jieba分词包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br></pre></td></tr></table></figure></p>
+<p>我们此次需要处理的，不是单一文本数据，而是28197条文本数据，因此我们需要把这项工作并行化。这就需要首先编写一个函数，处理单一文本的分词。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def chinese_word_cut(mytext):</span><br><span class="line">    return &quot; &quot;.join(jieba.cut(mytext))</span><br></pre></td></tr></table></figure></p>
+<p>有了这个函数之后，我们就可以不断调用它来批量处理数据框里面的全部文本（正文）信息了。你当然可以自己写个循环来做这项工作。但这里我们使用更为高效的apply函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[&quot;title_cutted&quot;] = df.title.apply(chinese_word_cut)</span><br></pre></td></tr></table></figure></p>
+<p>执行完毕之后，我们需要查看一下，文本是否已经被正确分词。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.title_cutted.head()</span><br></pre></td></tr></table></figure></p>
+<p>结果为下：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-569b53e696932361.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>接下来我们对这些本文做向量化，所谓文本向量化，指的就是形成一个28197（文档个数）*n（文本中所有词的数量）的0-1矩阵，特定词在这个文档出现记为1，否则为0。若选取所有词的话，这必然是一个很大的矩阵，因此在之前的操作中，本文从所有的词中选取了1000关键词。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer</span><br></pre></td></tr></table></figure></p>
+<p>处理的文本里面有大量的词汇。我们不希望处理所有词汇。因为一来处理时间太长，二来那些很不常用的词汇对我们的主题抽取意义不大。所以这里做了个限定，只从文本中提取1000个最重要的特征关键词，然后停止。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n_features = 1000</span><br></pre></td></tr></table></figure></p>
+<p>下面我们开始关键词提取和向量转换过程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tf_vectorizer = CountVectorizer(strip_accents = &apos;unicode&apos;,</span><br><span class="line">                                max_features=n_features,</span><br><span class="line">                                stop_words=&apos;english&apos;,</span><br><span class="line">                                max_df = 0.5,</span><br><span class="line">                                min_df = 10)</span><br><span class="line"></span><br><span class="line">tf = tf_vectorizer.fit_transform(df.title_cutted)</span><br></pre></td></tr></table></figure></p>
+<p>现在，开始我们的LDA模型，先导入软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.decomposition import LatentDirichletAllocation</span><br></pre></td></tr></table></figure></p>
+<p>至于主题数量，到底确定几个主题，这个确实不能事知道的，我们可以一步步不断地优化和观察各种数量的主题分类，取其最优。也可制定具体的量化标准，确定几个主题是最佳，附上参考链接：<a href="https://blog.csdn.net/lwhsyit/article/details/82750218" target="_blank" rel="noopener">https://blog.csdn.net/lwhsyit/article/details/82750218</a><br>此文在17点中，阐述了如何寻找最佳主题数量，并制定了量化标准，像下图这样，由于时间关系，不做具体说明：<br><img src="https://upload-images.jianshu.io/upload_images/13155641-8fe821690dc255c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LDA.jpg"><br>我们暂定5个分类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">n_topics = 5</span><br><span class="line">lda = LatentDirichletAllocation(n_topics=n_topics, max_iter=50,</span><br><span class="line">                                learning_method=&apos;online&apos;,</span><br><span class="line">                                learning_offset=50.,</span><br><span class="line">                                random_state=0)</span><br><span class="line">lda.fit(tf)</span><br></pre></td></tr></table></figure></p>
+<p>最后一句运行时间较长，<br>主题没有一个确定的名称，而是用一系列关键词刻画的。我们定义以下的函数，把每个主题里面的前若干个关键词显示出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def print_top_words(model, feature_names, n_top_words):</span><br><span class="line">    for topic_idx, topic in enumerate(model.components_):</span><br><span class="line">        print(&quot;Topic #%d:&quot; % topic_idx)</span><br><span class="line">        print(&quot; &quot;.join([feature_names[i]</span><br><span class="line">                        for i in topic.argsort()[:-n_top_words - 1:-1]]))</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure></p>
+<p>定义好函数之后，我们暂定每个主题输出前20个关键词。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n_top_words = 20</span><br></pre></td></tr></table></figure></p>
+<p>以下命令会帮助我们依次输出每个主题的关键词表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tf_feature_names = tf_vectorizer.get_feature_names()</span><br><span class="line">print_top_words(lda, tf_feature_names, n_top_words)</span><br></pre></td></tr></table></figure></p>
+<p>执行结果为下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Topic #0:</span><br><span class="line">电影 产品 科技 融资 ai 直播 公司 媒体 嗅评 经济 驾驶 员工 创新 回应 区块 票房 创始人 故事 网易 美团</span><br><span class="line">Topic #1:</span><br><span class="line">微信 视频 小米 华为 乐视 数据 上市 人工智能 营销 社交 巨头 头条 共享 支付宝 支付 北京 单车 雷军 bat 医疗</span><br><span class="line">Topic #2:</span><br><span class="line">苹果 创业 百度 未来 手机 ceo 晚报 世界 背后 内容 发布 平台 微软 vr 特斯拉 消费 生意 技术 流量 小米</span><br><span class="line">Topic #3:</span><br><span class="line">中国 早报 亿美元 市场 游戏 谷歌 美国 滴滴 企业 汽车 iphone 用户 资本 估值 三星 uber 全球 特朗普 贾跃亭 赚钱</span><br><span class="line">Topic #4:</span><br><span class="line">互联网 阿里 公司 投资 电商 京东 收购 时代 金融 马云 亚马逊 亿元 品牌 创业者 行业 广告 智能 机会 日本 万达</span><br></pre></td></tr></table></figure></p>
+<p>接下来，来点有趣的，使其变得可视化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pyLDAvis</span><br><span class="line">import pyLDAvis.sklearn</span><br><span class="line">pyLDAvis.enable_notebook()</span><br><span class="line">pyLDAvis.sklearn.prepare(lda, tf, tf_vectorizer)</span><br><span class="line">data = pyLDAvis.sklearn.prepare(lda, tf, tf_vectorizer)</span><br><span class="line">pyLDAvis.show(data)</span><br></pre></td></tr></table></figure></p>
+<p>以上代码需要一段时间，耐心等待：<br>图的左侧，用圆圈代表不同的主题，圆圈的大小代表了每个主题分别包含文章的数量。</p>
+<p>图的右侧，列出了最重要（频率最高）的30个关键词列表。注意当你没有把鼠标悬停在任何主题之上的时候，这30个关键词代表全部文本中提取到的30个最重要关键词。</p>
+<p>如果你把鼠标悬停在2号上面：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13155641-66c5b2a213ea31eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>右侧的关键词列表会立即发生变化，红色展示了每个关键词在当前主题下的频率。</p>
+<p>以上是认为设定主题数为5的情况。可如果我们把主题数量设定为10呢？(如果你要继续运行代码，需要点一下Kernel下面的Interrupt按钮)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">n_topics = 10</span><br><span class="line">lda = LatentDirichletAllocation(n_topics=n_topics, max_iter=50,</span><br><span class="line">                                learning_method=&apos;online&apos;,</span><br><span class="line">                                learning_offset=50.,</span><br><span class="line">                                random_state=0)</span><br><span class="line">lda.fit(tf)</span><br><span class="line">print_top_words(lda, tf_feature_names, n_top_words)</span><br><span class="line">pyLDAvis.sklearn.prepare(lda, tf, tf_vectorizer)</span><br><span class="line">data = pyLDAvis.sklearn.prepare(lda, tf, tf_vectorizer)</span><br><span class="line">pyLDAvis.show(data)</span><br></pre></td></tr></table></figure>
+<p>程序输出给我们10个主题下最重要的20个关键词:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Topic #0:</span><br><span class="line">中国 阿里 滴滴 乐视 金融 亚马逊 特朗普 广告 头条 日本 流量 音乐 体育 离职 ofo 万科 报告 成立 影业 版权</span><br><span class="line">Topic #1:</span><br><span class="line">苹果 早报 亿美元 汽车 晚报 人工智能 亿元 技术 微软 创业者 巨头 智能 资本 vr 上市 生意 一场 bat 印度 电视</span><br><span class="line">Topic #2:</span><br><span class="line">谷歌 数据 融资 支付 北京 硅谷 事件 医疗 财报 计划 蚂蚁 价值 影响 程序 大战 生活 亿美金 泡沫 调查 解读</span><br><span class="line">Topic #3:</span><br><span class="line">美国 科技 企业 背后 媒体 嗅评 uber 零售 区块 雷军 增长 荣耀 ip 设计 聊聊 好莱坞 罗永浩 拯救 年轻人 真相</span><br><span class="line">Topic #4:</span><br><span class="line">小米 手机 微信 产品 iphone 特斯拉 发布 三星 模式 消费 美团 马斯克 人类 告诉 升级 明星 时间 逻辑 危机 马化</span><br><span class="line">Topic #5:</span><br><span class="line">创业 投资 电商 京东 收购 时代 共享 内容 品牌 平台 机会 万达 网络 创始人 单车 ipo 成功 产业 融资 城市</span><br><span class="line">Topic #6:</span><br><span class="line">视频 电影 世界 经济 驾驶 赚钱 创新 行业 商业 故事 app 网易 机器人 转型 自动 付费 国产 上海 焦虑 网站</span><br><span class="line">Topic #7:</span><br><span class="line">游戏 直播 马云 社交 支付宝 oo facebook 领域 投资人 改变 微博 盈利 股东 项目 入股 合作 独角兽 平台 揭秘 尴尬</span><br><span class="line">Topic #8:</span><br><span class="line">公司 互联网 百度 华为 估值 早报 贾跃亭 回应 票房 市值 员工 刘强 风口 李彦宏 业务 联想 文化 香港 运营商 上市</span><br><span class="line">Topic #9:</span><br><span class="line">市场 未来 ceo 中国 ai 用户 营销 全球 股价 体验 淘宝 监管 银行 十年 发布会 小时 特币 无人机 案例 粉丝</span><br></pre></td></tr></table></figure></p>
+<p>你会发现当主题设定为10的时候，会有一些抱团现象出现。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13155641-29d457b58cac6999.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>本文分别绘制了主题数量为4—10的LDA图，经过分析，选取分类数量为5，可以分析：</p>
+<ul>
+<li><p><strong>主题1：无人驾驶</strong><br>相信大家都还记得上一届百度AI开发者大会，时任百度COO的陆奇在介绍Apollo计划之前，连线了一场视频直播：李彦宏正嘚瑟地坐在一辆百度和博世一起开发的、基于Apollo技术的自动驾驶汽车里，摆大爷劲儿。眼球是赚足了，李大爷也结结实实地在北京五环上吃到了一张罚单。</p>
+<p>2017年4月19日，百度正式宣布推出阿波罗（Apollo）计划。用百度的话说，阿波罗计划是百度AI中重要的一部分，它要向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。</p>
+<p>新型汽车启动自然有其原因，中国市场不可忽视，而像通用、福特、宝马、奔驰等此前花了大量金钱投入研发的车企也等于花了一大笔“冤枉钱”，百度可谓是自动驾驶圈中的“半壁江山”。</p>
+<p>谷歌无人驾驶[谷歌开启无人驾驶商用时代：无人出租车即将开始接单]<br><a href="https://baijiahao.baidu.com/s?id=1619098384974738839&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1619098384974738839&amp;wfr=spider&amp;for=pc</a></p>
+<p>滴滴无人驾驶[<a href="https://baijiahao.baidu.com/s?id=1614383642553153149&amp;wfr=spider&amp;for=pc]" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1614383642553153149&amp;wfr=spider&amp;for=pc]</a></p>
+<p>Uber无人驾驶[自动驾驶遭遇信任危机，Uber叫停美国无人驾驶测试]<a href="https://baijiahao.baidu.com/s?id=1595626162824376577&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1595626162824376577&amp;wfr=spider&amp;for=pc</a></p>
+<p>还有跑到美国不敢回来，融资造车的乐视老总贾跃亭<a href="http://news.bitauto.com/hao/wenzhang/841505" target="_blank" rel="noopener">http://news.bitauto.com/hao/wenzhang/841505</a></p>
+<p>而贾跃亭与恒大许家印签约，前段时间还在因为资本问题打官司。恒大与特朗普集团又有合作。</p>
+</li>
+<li><p><strong>主题2：电商</strong></p>
+<p>像关键词中出现的互联网、电商、阿里、京东、马云、  亚马逊等以及线下的万达、零售等，主题还是相当明显的。</p>
+</li>
+<li><p><strong>主题3 : 产业发展</strong><br>  像电影产业、科技产业、直播产业、媒体、最新的区    块链技术等，这一主题集中于各种产业的产业发展。</p>
+</li>
+<li><p><strong>主题4：互联网战略</strong><br>这一专题阐述的是像苹果、特斯拉、百度、微软、小米这些互联网公司，以及拉斯拉老总马斯克、百度老总李彦宏这些领导人，他们对未来科技的战略部署，像：手机、平台、技术、流量、app、音乐、虚拟现实、人类体验等。</p>
+</li>
+<li><p><strong>主题5：用户社交</strong><br>像微信、视频、华为、小米、乐视、微博等，这一主题反映了用户社交方面的情况。</p>
+</li>
+</ul>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><ul>
+<li>本文分析了优秀的文章，好的标题应该怎么写，这对未来投稿、写推送等很有帮助，也推荐关注了一些优秀作者；</li>
+<li>文本分析了2013-2018年来的热点事件和互联网技术这些年来的各种变革，新的技术涌现，旧的技术不断成熟或者被市场淘汰，这对我们对整体的大局把控有一定帮助；</li>
+<li>文本利用主题模型分析了虎嗅网文章的专注领域，包括电商、互联网战略、互联网下的用户社交和IT界新兴技术无人驾驶等。说明虎嗅网主要集中于互联网，以互联网巨头BAT的热点和未来战略为牵动展开分析和文章评论。这也恰恰成为了它小众的原因之一，不像今日头条一样，涵盖了生活、学习、情感、工作、娱乐、时政、国际等各种方面的新闻。<h2 id="八、参考文献"><a href="#八、参考文献" class="headerlink" title="八、参考文献"></a>八、参考文献</h2></li>
+<li>[以虎嗅网4W+文章的文本挖掘为例，展现数据分析的一整套流程]<br><a href="http://www.360doc.com/content/17/1212/14/27972427_712404479.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/17/1212/14/27972427_712404479.shtml</a><br>[写文章不会起标题？爬取虎嗅5万篇文章告诉你]<br><a href="http://www.woshipm.com/data-analysis/1617758.html" target="_blank" rel="noopener">http://www.woshipm.com/data-analysis/1617758.html</a><h4 id="注：文本旨在抛砖引玉，如有不同意见，欢迎商榷。"><a href="#注：文本旨在抛砖引玉，如有不同意见，欢迎商榷。" class="headerlink" title="注：文本旨在抛砖引玉，如有不同意见，欢迎商榷。"></a><strong>注：文本旨在抛砖引玉，如有不同意见，欢迎商榷。</strong></h4></li>
+</ul>
+<blockquote>
+<p>Written By LXP</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/23/second/" rel="prev" title="python爬虫&基于网易云音乐的用户推荐系统">
+                python爬虫&基于网易云音乐的用户推荐系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">lxp</p>
+              <p class="site-description motion-element" itemprop="description">喜欢新鲜事物</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、分析背景"><span class="nav-number">1.</span> <span class="nav-text">一、分析背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、1-网站选取"><span class="nav-number">1.1.</span> <span class="nav-text">1、1 网站选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-分析目的"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 分析目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-使用到的数据分析工具"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 使用到的数据分析工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、前期准备"><span class="nav-number">2.</span> <span class="nav-text">二、前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Pyspider"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Pyspider</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1Pyspider简介"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1Pyspider简介</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-Pyspider安装及配置"><span class="nav-number">2.2.</span> <span class="nav-text">2.1.2 Pyspider安装及配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-MongoDB"><span class="nav-number">2.3.</span> <span class="nav-text">2.2 MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-MongoDB简介"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.2.1 MongoDB简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-MongoDB安装及配置"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.2.2 MongoDB安装及配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、数据获取及预处理"><span class="nav-number">3.</span> <span class="nav-text">三、数据获取及预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1数据爬取"><span class="nav-number">3.1.</span> <span class="nav-text">3.1数据爬取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-使用PyCharm"><span class="nav-number">3.2.</span> <span class="nav-text">3.1.1 使用PyCharm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-使用PySpider爬取动态加载页面"><span class="nav-number">3.3.</span> <span class="nav-text">3.1.2 使用PySpider爬取动态加载页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-数据清洗"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.2 数据清洗</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、数据统计分析"><span class="nav-number">4.</span> <span class="nav-text">四、数据统计分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-整体情况"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 整体情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-虎嗅网文章发布数量变化"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 虎嗅网文章发布数量变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-文章收藏量TOP10"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 文章收藏量TOP10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-历年TOP3文章收藏比较"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 历年TOP3文章收藏比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-发文数量最多的TOP20作者"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 发文数量最多的TOP20作者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-文章评论数与收藏量的关系"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 文章评论数与收藏量的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-文章收藏量与标题长度关系"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 文章收藏量与标题长度关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-三分之一以上文章的标题喜欢使用问号"><span class="nav-number">4.8.</span> <span class="nav-text">4.8 三分之一以上文章的标题喜欢使用问号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、绘制词云图"><span class="nav-number">5.</span> <span class="nav-text">五、绘制词云图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、文本挖掘-主题模型"><span class="nav-number">6.</span> <span class="nav-text">六、文本挖掘(主题模型)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-理论"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-实现"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、总结"><span class="nav-number">7.</span> <span class="nav-text">七、总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、参考文献"><span class="nav-number">8.</span> <span class="nav-text">八、参考文献</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注：文本旨在抛砖引玉，如有不同意见，欢迎商榷。"><span class="nav-number">8.0.1.</span> <span class="nav-text">注：文本旨在抛砖引玉，如有不同意见，欢迎商榷。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lxp</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
